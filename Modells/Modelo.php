@@ -9,7 +9,7 @@ class Modelo
 
             
         //Posible paginas para los administradores
-        if( $enlace == "dashboard" || $enlace == "inventario" || $enlace == "categorias" || $enlace == "usuarios" || $enlace=="salir"){
+        if( $enlace == "dashboard" || $enlace == "inventario" || $enlace == "categorias" || $enlace == "usuarios" || $enlace=="salir" || $enlace == "agregar_usuario" || $enlace == "editar_usuario" ){
             //Mostramos el URL concatenado con la variable $enlacesModel
             $pagina = "Views/Paginas/". $enlace .".php";
         }

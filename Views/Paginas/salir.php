@@ -1,10 +1,4 @@
-<div class="page-body">
+<?php
+session_destroy();
 
-    <div class="row">
-
-        <h1>  Has salido xD </h1>
-        https://themify.me/themify-icons
-
-    </div>
-
-</div>
+echo '<script> window.location.href = "index.php"; </script>';

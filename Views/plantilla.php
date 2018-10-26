@@ -16,8 +16,10 @@
     <meta name="description" content="#">
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
+
     <!-- Favicon icon -->
-    <link rel="icon" href="Public/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Public/img/logo.png" type="image/x-icon">
+    
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <!-- Required Fremwork -->
@@ -31,6 +33,14 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="Public/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="Public/assets/css/jquery.mCustomScrollbar.css">
+
+    <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css"
+          href="Public/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="Public/assets/pages/data-table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="Public/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     
@@ -154,6 +164,51 @@
     <script src="Public/assets/js/demo-12.js"></script>
     <script src="Public/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="Public/assets/js/script.min.js"></script>
+
+    <!-- data-table js -->
+    <script src="Public/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="Public/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="Public/assets/pages/data-table/js/jszip.min.js"></script>
+    <script src="Public/assets/pages/data-table/js/pdfmake.min.js"></script>
+    <script src="Public/assets/pages/data-table/js/vfs_fonts.js"></script>
+    <script src="Public/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="Public/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="Public/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="Public/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="Public/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- page script -->
+    <script>
+    $(function () {
+
+        //Inicializacion de Data-Table
+        $('#tabla').DataTable({
+            "ordering": false,
+            "info":     false,
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        })
+    })
+
+    </script>
 </body>
 
 </html>

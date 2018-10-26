@@ -34,7 +34,7 @@
                             <li class="user-profile header-notification">
                                 
                                 <a href="#!">
-                                    <span>John Doe</span> <i class="ti-angle-down"></i>
+                                    <span> <?= $_SESSION['nombre'] ?> </span> <i class="ti-angle-down"></i>
                                 </a>
                                 
                                 <ul class="show-notification profile-notification">
