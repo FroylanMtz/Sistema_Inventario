@@ -16,4 +16,6 @@ $controlador = new Controlador();
 //Muestra la funcion "plantilla" que se encuentra en controllers/controller
 $controlador->cargarPlantilla();
 
+// Mi comentario
+
 ?>
