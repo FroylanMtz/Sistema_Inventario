@@ -42,8 +42,7 @@ $datosUsuario = $controlador->obtenerDatosUsuarios();
                         <th>Id</th>
                         <th>Nombre (s)</th>
                         <th>Apellido (s)</th>
-                        <th>Usuario</th>
-                        <th>Contraseña</th>
+                        <th>Usuario</th>                        
                         <th>Correo</th>
                         <th>Registro</th>
                         <th>Foto</th>
@@ -60,7 +59,6 @@ $datosUsuario = $controlador->obtenerDatosUsuarios();
                                 echo '<td>'. $datosUsuario[$i]['nombre'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['apellido'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['nombre_usuario'] .'</td>';
-                                echo '<td>'. $datosUsuario[$i]['password'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['correo'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['fecha_registro'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['ruta_imagen'] .'</td>';
