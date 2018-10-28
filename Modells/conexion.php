@@ -6,6 +6,7 @@ class Conexion{
 
     public function conectar(){
         $pdo = new PDO("mysql:host=localhost;dbname=sistema_inventario", "root", "");
+        $pdo->exec("SET CHARACTER SET utf8");
         return $pdo;
     }
 

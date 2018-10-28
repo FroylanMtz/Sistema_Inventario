@@ -37,7 +37,7 @@ $controlador = new Controlador();
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos de la categoria</h4> <center>
 
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
 
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre </label>
@@ -63,7 +63,7 @@ $controlador = new Controlador();
                         
 
                         <div class="card-footer">
-                            <center> <input type="submit" class="btn btn-primary input-lg" value="Guardar Datos" /> </center>
+                            <center> <input type="submit" class="btn btn-primary input-lg" name="guardar" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>
@@ -77,9 +77,9 @@ $controlador = new Controlador();
 
 <?php
 
-if(isset($_POST['categoria']) ){
+if(isset($_POST['guardar']) ){
 
-    $controlador->guardarDatosUsuario();
+    $controlador->agregarCategoriaController();
 
 }
 

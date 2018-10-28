@@ -251,16 +251,19 @@ class Controlador
     public function agregarCategoriaController(){
         // Se guardan en una variable los datos de del form con POST
         $categoria = $_POST["categoria"];
-        $descripcion $_POST["descripcion"];
+        $descripcion = $_POST["descripcion"];
+
+        // La fecha se guarda con el siguiente formato, si se le da otro formato es probable que no se agregue
+        $fecha = date("Y-m-d");
 
         // Se guarda el resultado que traiga el método del modelo
-        $respuestaController = Datos::agregarCategoriaModel($categoria, $descripcion);
+        $respuestaController = Datos::agregarCategoriaModel($categoria, $descripcion, $fecha);
 
         // Se verifica si se realizó con éxito el agregar la categoria.
         if($respuestaController){
             echo '<script> 
                     alert("Categoria agregada con éxito");
-                    window.location.href("index.php?action=categorias");
+                    window.location.href = "index.php?action=categorias";
                  </script>';
         }else{
             echo "<script> Error -> No se agregó la categoria </script>";

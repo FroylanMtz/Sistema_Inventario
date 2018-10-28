@@ -131,15 +131,24 @@ class Datos extends Conexion{
         
         //y finalmente se pasan al controlador para ponerlos en la vista en donde se hace la edicion de dicho registro
         return $r;
-
     }
+
 
 
     #CATEGORIAS ------------------------------------------
         #------------------------------
     // Método para agregar una categoria
-    public function agregarCategoriaModel($categoria, $descripcion){
-        
+    public function agregarCategoriaModel($categoria, $descripcion, $fecha){
+        // Consulta sql
+        $sql = "INSERT INTO categorias (nombre,descripcion,fecha_agregado) VALUES(?,?,?)";
+
+        // Se prepara la consulta con la sentencia sql como parámetro
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta pasandole un array con los valores traidos de la función
+        // Si se realizó con éxito la consulta devuelve true, false en caso contrario
+        if($stmt->execute([$categoria,$descripcion,$fecha])) { return true; }
+        else { return false; }
     }
 
 
