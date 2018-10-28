@@ -257,10 +257,10 @@ class Controlador
         $fecha = date("Y-m-d");
 
         // Se guarda el resultado que traiga el método del modelo
-        $respuestaController = Datos::agregarCategoriaModel($categoria, $descripcion, $fecha);
+        $respuesta = Datos::agregarCategoriaModel($categoria, $descripcion, $fecha);
 
         // Se verifica si se realizó con éxito el agregar la categoria.
-        if($respuestaController){
+        if($respuesta){
             echo '<script> 
                     alert("Categoria agregada con éxito");
                     window.location.href = "index.php?action=categorias";
@@ -268,6 +268,18 @@ class Controlador
         }else{
             echo "<script> Error -> No se agregó la categoria </script>";
         }
+    }
+
+    // Método para recibir del modelo los diferentes datos de las categorias 
+    // y enviarlas a la vista
+    public function datosCategoriasController(){
+        // Se recibe la respuesta del modelo
+        $respuestaController = Datos::datosCategoriasModel();
+
+        // Si la respuesta del modelo es un array se manda ese array a
+        // la vista, sino devuelve false
+        if($respuestaController){ return $respuestaController; }
+        else { return false; }
     }
 
 }

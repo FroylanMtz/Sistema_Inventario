@@ -151,5 +151,23 @@ class Datos extends Conexion{
         else { return false; }
     }
 
+    // Método para obtener los datos de las categorias
+    public function datosCategoriasModel(){
+        // Se guarda en una variable la consulta sql
+        $sql = "SELECT * FROM categorias";
 
+        // Se manda la consulta como parámetro al método prepare
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta
+        $stmt->execute();
+
+        // Se guarda el array asociativo de la consulta en una variable
+        $respuestaModel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Si el array no está está vacío devuelve el array, caso contrario devulve false
+        if($respuestaModel){ return $respuestaModel; }
+        else { return false; }
+
+    }
 }
