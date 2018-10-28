@@ -266,7 +266,7 @@ class Controlador
                     window.location.href = "index.php?action=categorias";
                  </script>';
         }else{
-            echo "<script> Error -> No se agregó la categoria </script>";
+            echo '<script> alert("Error -> No se agregó la categoria"); </script>';
         }
     }
 
@@ -282,6 +282,49 @@ class Controlador
         else { return false; }
     }
 
+    
+    //Método para eliminar una categoria
+    public function eliminarCategoriaController(){
+        // Se recibe y se almacena en una variable la respuesta del modelo
+        // Se pasa como parámetro el id con GET del elemento a eliminar
+        $respuestaController = Datos::eliminarCategoriaModel($_GET["id"]);
+
+        // Si se eliminó con éxito la categoria el modelo regresa true
+        if($respuestaController){
+            echo '<script>
+                  alert("Categoria eliminada!");
+                  window.location.href = "index.php?action=categorias";
+                  </script>';
+        }else{
+            echo '<script> alert("Error -> No se eliminó la categoria"); </script>';
+        }
+    }
+
+    // Método para obtener los datos de una categoría en específico (id)
+    public function obtenerCategoriaController(){
+        // Se manda llamar al método del modelo y se recibe la respuesta
+        $respuestaController = Datos::obtenerCategoriaModel($_GET["id"]);
+
+        // Si devuelve un array con los datos devuelve ese array, caso contrario false
+        if($respuestaController){ return $respuestaController; }
+        else { return false; }
+    }
+
+    // Método para enviar al modelo los datos del form de editar
+    public function editarCategoriaController(){
+        // Se recibe la respuesta del modelo, se pasan las variables del form como paráetro
+        $respuestaController = Datos::editarCategoriaModel($_POST["categoria"], $_POST["descripcion"], $_POST["id"]);
+
+        // el modelo devuelve true si se editaron los datos correctamente
+        if($respuestaController){
+            echo '<script>
+                  alert("Datos de la categoria actualizados correctamente!");
+                  window.location.href = "index.php?action=categorias";
+                  </script>';
+        }else{
+            echo '<script> alert("Error -> No se actualizaron los datos!"); </script>';
+        }
+    }
 }
 
 ?>

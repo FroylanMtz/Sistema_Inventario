@@ -168,6 +168,51 @@ class Datos extends Conexion{
         // Si el array no está está vacío devuelve el array, caso contrario devulve false
         if($respuestaModel){ return $respuestaModel; }
         else { return false; }
+    }
 
+    // Método para eliminar una categoría
+    public function eliminarCategoriaModel($id){
+        // Consulta sql
+        $sql = "DELETE FROM categorias WHERE id=?";
+
+        // Se pasa la consulta como parámetro del método prepare
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta, si se ejecuta con éxito se devuelve true, caso contrario false
+        if($stmt->execute([$id])){ return true; }
+        else { return false; }
+    }
+
+    // Método para obtener los datos de una categoría dado el id
+    public function obtenerCategoriaModel($id){
+        // Consulta sql
+        $sql = "SELECT * FROM categorias WHERE id=?";
+
+        // Se pasa la consulta como parámetro del método prepare
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta, pasándole como parámetro el id
+        $stmt->execute([$id]);
+
+        // Se almacena en un array lo que trajo la consulta
+        $respuestaModel = $stmt->fetchAll();
+
+        // Si el array asociativo trae datos se retorna ese array, caso contrario false.
+        if($respuestaModel) { return $respuestaModel; }
+        else { return false; }
+    }
+
+    // Método para editar los datos de una categoria
+    // se pasan como parámetro el nombre, descripción y id de la categoria
+    public function editarCategoriaModel($categoria, $descripcion, $id){
+        // Consulta sql
+        $sql = "UPDATE categorias SET nombre=?,descripcion=? WHERE id=?";
+
+        // Se pasa la consulta como parámetro del método prepare
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // si se ejecuta con éxito devuelve true, caso contrario false
+        if($stmt->execute([$categoria,$descripcion,$id])){ return true; }
+        else { return false; }
     }
 }

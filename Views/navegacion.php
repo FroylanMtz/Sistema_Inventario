@@ -12,7 +12,7 @@
         </div>
 
 
-        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Administracion</div>
+        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Administración</div>
 
         <ul class="pcoded-item pcoded-left-item">
         
