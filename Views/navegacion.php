@@ -36,11 +36,27 @@
 
 
             <li class="pcoded-hasmenu">
-                <a href="index.php?action=categorias">
+                <a href="#">
                     <span class="pcoded-micon"><i class="ti-bookmark"></i><b>W</b></span>
                     <span class="pcoded-mtext"  data-i18n="nav.widget.main">Categorias</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
+
+                <!-- Lista desplegable -->
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a href="index.php?action=categorias">
+                            <span class="pcoded-mtext" data-i18n="nav.dash.default"><i class="ti-agenda"></i> Lista de categorías</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="index.php?action=agregar_categoria">
+                            <span class="pcoded-mtext" data-i18n="nav.dash.ecommerce"> <i class="ti-plus"></i> Agregar categoría</span>
+                        </a>
+                    </li>
+
+                </ul>
+
             </li>
 
             <li class="pcoded-hasmenu">

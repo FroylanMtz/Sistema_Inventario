@@ -6,7 +6,7 @@
             </div>
             <div class="d-inline-block">
                 <h5>Categorias</h5>
-                <span> Estadisticas de los productos </span>
+                <span> Lista de las categorías </span>
             </div>
         </div>
         <div class="col">

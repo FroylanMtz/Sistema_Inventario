@@ -3,6 +3,9 @@ require_once('conexion.php');
 
 class Datos extends Conexion{
 
+
+    # USUARIOS -------------------------------------------
+        # ---------------
     //Funcion que compara si existe el usuario que intenta logearse, pasandole los datos a traves de un objeto y ademas el nombre de la tabla,
     //Asi como se convierte a la contraseña con la funcion MD5 para que se compare correctamente con la almacenada en la base de datos
     public function validarUsuario($datos){
@@ -129,6 +132,14 @@ class Datos extends Conexion{
         //y finalmente se pasan al controlador para ponerlos en la vista en donde se hace la edicion de dicho registro
         return $r;
 
+    }
+
+
+    #CATEGORIAS ------------------------------------------
+        #------------------------------
+    // Método para agregar una categoria
+    public function agregarCategoriaModel($categoria, $descripcion){
+        
     }
 
 

@@ -44,6 +44,8 @@ class Controlador
     }
 
 
+    # INICIO DE SESION -----------------------------------------
+        # -------------------------------
     public function iniciarSesion()
     {
 
@@ -82,6 +84,8 @@ class Controlador
 
 
 
+    # USUARIOS ------------------------------------------------
+        # ---------------------------------
     //Funcion que trae a todos los alumnos registrados en la dicha tabla para mostrarlos en la pagina de alumnos.php, se muestra ademas un boton para actualizar y eliminar para administrarlos
     public function obtenerDatosUsuarios()
     {
@@ -221,8 +225,8 @@ class Controlador
 
     }
 
+    // Método para eliminar usuario
     public function eliminarUsuario(){
-
         $usuario_id = $_GET['id'];
         
         $respuesta = Datos::eliminarDatosUsuario($usuario_id, "usuarios");
@@ -237,6 +241,30 @@ class Controlador
             echo '<script> alert("Error al eliminar") </script>';
         }
 
+    }
+
+
+
+    # CATEGORIAS ----------------------------------------------
+        # ----------------------------------
+    // Método para mandar los datos del form al modelo y recibir su respuesta
+    public function agregarCategoriaController(){
+        // Se guardan en una variable los datos de del form con POST
+        $categoria = $_POST["categoria"];
+        $descripcion $_POST["descripcion"];
+
+        // Se guarda el resultado que traiga el método del modelo
+        $respuestaController = Datos::agregarCategoriaModel($categoria, $descripcion);
+
+        // Se verifica si se realizó con éxito el agregar la categoria.
+        if($respuestaController){
+            echo '<script> 
+                    alert("Categoria agregada con éxito");
+                    window.location.href("index.php?action=categorias");
+                 </script>';
+        }else{
+            echo "<script> Error -> No se agregó la categoria </script>";
+        }
     }
 
 }
