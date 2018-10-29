@@ -325,6 +325,21 @@ class Controlador
             echo '<script> alert("Error -> No se actualizaron los datos!"); </script>';
         }
     }
+
+
+
+
+    # PRODUCTOS ----------------------------------------------------
+        # ----------------------------------
+    // Método para recibir del modelo todos los productos (tabla productos)
+    public function obtenerProductosController(){
+        // Se recibe la respuesta del modelo
+        $respuestaController = Datos::obtenerProductosModel();
+
+        // Si el array no está vacío, lo retorna, caso contrario devuelve false.
+        if($respuestaController){ return $respuestaController; }
+        else { return false; }
+    }
 }
 
 ?>

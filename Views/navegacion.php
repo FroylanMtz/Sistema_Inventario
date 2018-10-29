@@ -27,11 +27,25 @@
 
 
             <li class="pcoded-hasmenu">
-                <a href="index.php?action=inventario">
+                <a href="#!">
                     <span class="pcoded-micon"><i class="ti-package"></i>  <b>W</b></span>
                     <span class="pcoded-mtext"  data-i18n="nav.widget.main">Inventario</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
+
+                <!-- Lista desplegable -->
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a href="index.php?action=inventario">
+                            <span class="pcoded-mtext" data-i18n="nav.dash.default"><i class="ti-agenda"></i> Lista de productos</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="index.php?action=agregar_producto">
+                            <span class="pcoded-mtext" data-i18n="nav.dash.ecommerce"> <i class="ti-plus"></i> Agregar producto</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
 

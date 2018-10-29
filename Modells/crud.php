@@ -215,4 +215,27 @@ class Datos extends Conexion{
         if($stmt->execute([$categoria,$descripcion,$id])){ return true; }
         else { return false; }
     }
+
+
+
+    # PRODUCTOS ------------------------------------------
+        # -----------------------
+    // Método para obtener todos los productos
+    public function obtenerProductosModel(){
+        // Consulta sql
+        $sql = "SELECT * FROM productos";
+
+        // Se prepara la consulta
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta
+        $stmt->execute();
+
+        // Se almacena en un array asociativo los registros encontrados
+        $respuestaModel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Si el array no está vacío retorna el array, sino devuelve false.
+        if($respuestaModel){ return $respuestaModel; }
+        else { return false; }
+    }
 }
