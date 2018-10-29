@@ -1,6 +1,6 @@
 <?php
 
-    # Agregar Productos ---------------------
+    # Editar Productos ---------------------
     # ---- 100% ----
     # -------------------------------------
     //Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo que cominican a la vista con el controlador

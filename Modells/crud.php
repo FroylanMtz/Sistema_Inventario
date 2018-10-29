@@ -294,7 +294,7 @@ class Datos extends Conexion{
         $nombre = "el nombre";
         //Se relacionan todos los parametros con los pasados en el arreglo asociativo desde el controlador
         $stmt->bindParam(1, $datosProducto['codigo'] );
-        $stmt->bindParam(2, $datosProducto['nombre']); // Se queda nulo
+        $stmt->bindParam(2, $datosProducto['producto']); // Se queda nulo
         $stmt->bindParam(3, $datosProducto['precio'] );
         $stmt->bindParam(4, $datosProducto['stock'] );
         $stmt->bindParam(5, $categoria[0] );

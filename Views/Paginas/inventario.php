@@ -96,7 +96,7 @@
                                     
                                     //Estos dos de abajo son los botones, se puede observar que estan listos para redirigir el flujo de la app a una pagina que se ellama ver, editar y eliminar, teniendo un parametro el cual es el id del producto
 
-                                    echo '<td> <a href="index.php?action=ver_producto&id='.$producto['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
+                                    echo '<td> <a href="index.php?action=ver_producto&id='.$producto['id'].'" type="button" class="btn btn-primary"> <i class="fas fa-edit"></i> </a> </td>';
 
                                     echo '<td> <a href="index.php?action=editar_producto&id='.$producto['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
                                     

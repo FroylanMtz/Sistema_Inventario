@@ -9,7 +9,7 @@ class Modelo
 
             
         //Posible paginas para los administradores
-        if( $enlace == "dashboard" || $enlace == "inventario" || $enlace == "categorias" || $enlace == "usuarios" || $enlace=="salir" || $enlace == "agregar_usuario" || $enlace == "editar_usuario" || $enlace == "agregar_categoria" || $enlace == "editar_categoria" || $enlace == "agregar_producto" || $enlace == "editar_producto"){
+        if( $enlace == "dashboard" || $enlace == "inventario" || $enlace == "categorias" || $enlace == "usuarios" || $enlace=="salir" || $enlace == "agregar_usuario" || $enlace == "editar_usuario" || $enlace == "agregar_categoria" || $enlace == "editar_categoria" || $enlace == "agregar_producto" || $enlace == "editar_producto" || $enlace == "ver_producto" || $enlace == "agregar_stock" || $enlace == "eliminar_stock"){
             //Mostramos el URL concatenado con la variable $enlacesModel
             $pagina = "Views/Paginas/". $enlace .".php";
         }

@@ -62,6 +62,7 @@ class Controlador
             if( $respuesta )
             {
                 session_start();
+                $_SESSION['usuario'] = $respuesta['nombre_usuario'];                
                 $_SESSION['iniciada'] = true;
                 $_SESSION['nombre'] = $respuesta['nombre']. ' ' . $respuesta['apellido'];
                 $_SESSION['idUsuario'] = $respuesta['id'];
@@ -443,8 +444,8 @@ class Controlador
                             'producto' => $producto,
                             'categoria' => $categoria,
                             'precio' => $precio,
-                            'stock' => $stock
-                            /*'foto' => $codigo.'.'.$extension*/ ); //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
+                            'stock' => $stock );
+                            /*'foto' => $codigo.'.'.$extension*/  //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
         
         //Se manda ese objeto con los datos al modelo para que los almacenen en la tabla pasada por parametro aqui abajo
         $respuesta = Datos::editarProductoModel($datosProducto, $_GET['id']);
@@ -489,6 +490,17 @@ class Controlador
         // Si no trajo un array vacío devuelve el array, sino retorna false
         if($respuestaController){ return $respuestaController; }
         else { return false; }
+    }
+
+    //Método para agregar stock
+    public function agregarStockController(){
+        // Se recibe la respuesta del modelo
+        $idProducto = $_GET["id"];
+        $usuario = $_SESSION["usuario"];
+        $referencia = $_POST["referencia"];
+        $stock = $_POST["stock"];
+        
+        //$respuestaController = Datos::agregarStockModel();
     }
 }
 
