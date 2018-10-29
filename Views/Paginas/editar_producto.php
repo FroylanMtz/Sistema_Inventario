@@ -7,11 +7,18 @@
     $controlador = new Controlador();
 
 
-    // Si se presionó el botón de guardar datos
-    if (isset($_POST["guardar"])) {
-        // Se llama al método del controlador para preparar los datos
-        $controlador->guardarProductoController();
+    // Se traen todos los datos del producto con el id traido con GET en un array
+    // Se verifica si existe la variable GET
+    if(isset($_GET["id"])){
+        // Se guarda el array con los datos de la categoria en específico
+       $producto = $controlador->obtenerProductoController();
     }
+
+    // Si se presionó el botón de guardar datos
+    if (isset($_POST["actualizar"])) {        
+        // Se llama al método del controlador para preparar los datos
+        $controlador->editarProductoController();
+    }    
 
     // Se obtienen los datos de las categorias para extraer los nombre y mostrarlos en el form
     $categorias = $controlador->datosCategoriasController();
@@ -21,11 +28,11 @@
     <div class="card-block front-icon-breadcrumb row align-items-end">
         <div class="breadcrumb-header col">
             <div class="big-icon">
-                <i class="ti-plus"></i>
+                <i class="ti-reload"></i>
             </div>
             <div class="d-inline-block">
-                <h5> Agregar producto </h5>
-                <span> Nuevo producto </span>
+                <h5> Editar producto </h5>
+                <span> Editar </span>
             </div>
         </div>
         <div class="col">
@@ -33,7 +40,7 @@
             <ul class="breadcrumb-title">
                 <li class="breadcrumb-item"><a href="index.php?action=dashboard"> Inicio </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#"> Nuevo Producto </a>
+                <li class="breadcrumb-item"><a href="#"> Editar Producto </a>
                 </li>
             </ul>
         </div>
@@ -52,11 +59,15 @@
 
                     <form method="POST" enctype="multipart/form-data">
 
+                        <input type="hidden" name="fotoActual" value="<?= $producto[0]['ruta_img'] ?>">
+
+                        <input type="hidden" name="id" value="<?= $producto[0]['id'] ?>">
+
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Código </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">                                    
-                                    <input type="text" class="form-control" name="codigo" required placeholder="Código del producto">
+                                    <input type="text" class="form-control" name="codigo" required value="<?php echo($producto["codigo"]) ?>">
                                 </div>
                             </div>
                         </div>
@@ -65,7 +76,7 @@
                             <label class="col-sm-4 col-lg-2 col-form-label"> Producto </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">                                    
-                                    <input type="text" class="form-control" name="producto" required placeholder="Nombre del producto">
+                                    <input type="text" class="form-control" name="producto" required placeholder="Nombre del producto" value="<?php echo($producto["nombre"]) ?>">
                                 </div>
                             </div>
                         </div>
@@ -73,8 +84,18 @@
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Categoria </label>
                             <div class="col-sm-8 col-lg-10">
-                                <div class="input-group">                                    
+                                <div class="input-group">    
+                                    <?php 
+                                    // Se obtiene le nombre de la categoria, para no poner el número (id)
+                                        $_GET["id"] = $producto["categoria"];
+                                        $categoria = $controlador->obtenerCategoriaController();
+                                     ?>                                
                                     <select name="categoria" class="form-control">
+                                        <option>
+                                            <?php                                                                 
+                                            echo $categoria[0]["nombre"];
+                                            ?>
+                                        </option>
                                         <?php 
                                             // Ciclo que trae todas las categorias
                                             foreach ($categorias as $categoria) {
@@ -92,7 +113,7 @@
                             <label class="col-sm-4 col-lg-2 col-form-label"> Precio </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">                                    
-                                    <input type="text" class="form-control" name="precio" required placeholder="Precio del producto">
+                                    <input type="text" class="form-control" name="precio" required placeholder="Precio del producto" value="<?php echo($producto["precio"]) ?>">
                                 </div>
                             </div>
                         </div>
@@ -101,26 +122,26 @@
                             <label class="col-sm-4 col-lg-2 col-form-label"> Stock </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">                                    
-                                    <input type="number" class="form-control" name="stock" required placeholder="Stock inicial">
+                                    <input type="number" class="form-control" name="stock" required placeholder="Stock inicial" value="<?php echo($producto["stock"]) ?>">
                                 </div>
                             </div>
                         </div>
 
-
+                        <!--
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Foto</label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"><i class="fas fa-image"></i></span>
-                                    <input type="file" class="form-control input-lg" name="foto" required />
+                                    <input type="file" class="form-control input-lg" name="foto" value="<?php echo($producto["ruta_img"]) ?>" />
                                 </div>
                             </div>
                         </div>
-
+                        -->
                         
 
                         <div class="card-footer">
-                            <center> <input type="submit" class="btn btn-primary input-lg" name="guardar" value="Guardar Datos" /> </center>
+                            <center> <input type="submit" class="btn btn-primary input-lg" name="actualizar" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>

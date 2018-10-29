@@ -76,7 +76,6 @@ class Datos extends Conexion{
         }else{
             return "error";
         }
-
     }
 
     //Funcion que trae todos los registros de la tabla alumnos para mostrarlos,
@@ -218,6 +217,7 @@ class Datos extends Conexion{
 
 
 
+
     # PRODUCTOS ------------------------------------------
         # -----------------------
     // Método para obtener todos los productos
@@ -235,7 +235,112 @@ class Datos extends Conexion{
         $respuestaModel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Si el array no está vacío retorna el array, sino devuelve false.
-        if($respuestaModel){ return $respuestaModel; }
+        if($respuestaModel){             
+            return $respuestaModel; 
+        }
+        else { return false; }
+    }
+
+
+    // Método para guardar el producto
+    public function guardarProductoModel($datosProducto){
+
+        //OBTENER EL ID DE LA CATEGORIA
+        $sql = "SELECT id FROM categorias WHERE nombre=?";
+        $stmt_id = Conexion::conectar()->prepare($sql);
+        $stmt_id->execute([$datosProducto["categoria"]]);
+        $id = $stmt_id->fetch();        
+
+        //Se prepara el query con el comando INSERT -> DE INSERTAR 
+        $stmt = Conexion::conectar()->prepare("INSERT INTO productos(codigo,nombre,fecha_agregado,precio,stock,categoria,ruta_img) VALUES(:codigo,:nombre,:fecha_agregado,:precio,:stock,:categoria,:ruta_img)");
+        
+        //Se colocan todos sus parametros especificados, y se relacionan con los datos pasdaos por parametro a esta funcion desde el controladro en modo de array asociativo
+        //Asi como se especifica como deben ser tratados (tipo de dato)
+        $stmt->bindParam(":codigo", $datosProducto["codigo"] , PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $datosProducto["producto"], PDO::PARAM_STR);
+        $stmt->bindParam(":fecha_agregado", date("Y-m-d"), PDO::PARAM_STR);
+        $stmt->bindParam(":precio", $datosProducto["precio"], PDO::PARAM_STR);
+        $stmt->bindParam(":stock", $datosProducto["stock"], PDO::PARAM_STR);
+        $stmt->bindParam(":categoria", $id[0], PDO::PARAM_STR);
+        $stmt->bindParam(":ruta_img", $datosProducto["foto"], PDO::PARAM_STR);
+
+        //print_r($datosAlumno);
+
+        //Se ejecuta dicha insercion y se notifica al controlador para que este le notifique a las vistas necesarias
+        if($stmt->execute()){
+            //$stmt->close();
+            return true;
+        }else{
+            //$stmt->close();
+            return "error";
+        }
+    }
+
+
+    //Funcion que se usa para editar un cierto registro de la tabla alumnos, Este de giual forma tiene dos parametros, uno para especificar los datos en una arreglo asociativo y otro para indicar el nombre de la tabla donde se editaran dichos datos
+    public function editarProductoModel($datosProducto, $idProducto){
+
+        //Obtener el id de la categoria
+        $sql = "SELECT id FROM categorias WHERE nombre=?";
+        $stmt_id = Conexion::conectar()->prepare($sql);
+        $stmt_id->execute([$datosProducto["categoria"]]);
+
+        $categoria = $stmt_id->fetch();        
+
+        //Se prepara el query con el comando UPDATE -> DE EDITAR, O ACTUALIZAR
+        $stmt = Conexion::conectar()->prepare("UPDATE productos SET codigo = ?, nombre = ?, precio = ?, stock = ?, categoria = ? WHERE id = ?");
+        
+        $id = 5;
+        $nombre = "el nombre";
+        //Se relacionan todos los parametros con los pasados en el arreglo asociativo desde el controlador
+        $stmt->bindParam(1, $datosProducto['codigo'] );
+        $stmt->bindParam(2, $datosProducto['nombre']); // Se queda nulo
+        $stmt->bindParam(3, $datosProducto['precio'] );
+        $stmt->bindParam(4, $datosProducto['stock'] );
+        $stmt->bindParam(5, $categoria[0] );
+        //$stmt->bindParam(6, $datosProducto['foto'] );
+        $stmt->bindParam(6, $idProducto );
+                
+        
+
+        //Y son ejecutados y notificados al controlador para que este les notifique a las vistas para que den un mensaje amigable al usuario
+        if($stmt->execute()){
+            return "success";
+        }else{
+            return "error";
+        }
+    }
+
+
+    // Método para eliminar un producto
+    public function eliminarProductoModel($id){
+        // Consulta sql
+        $sql = "DELETE FROM productos WHERE id=?";
+
+        // Se pasa la consulta como parámetro del método prepare
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta, si se ejecuta con éxito se devuelve true, caso contrario false
+        if($stmt->execute([$id])){ return true; }
+        else { return false; }
+    }
+
+    // Método para obtener los datos de un producto específico y enviar un array asociatvo al controlador
+    public function obtenerProductoModel($idProducto){
+        // Consulta sql
+        $sql = "SELECT * FROM productos WHERE id=?";
+
+        // Se prepara la consulta
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta, se pasa como parámetro el id del producto
+        $stmt->execute([$idProducto]);
+
+        // Se guarda el array
+        $respuestaModel = $stmt->fetch();
+
+        // Si el array es vacío devuelve false, sino retorna el array
+        if($respuestaModel) { return $respuestaModel; }
         else { return false; }
     }
 }

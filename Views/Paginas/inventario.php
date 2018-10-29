@@ -1,7 +1,7 @@
 <?php 
     
     # Inventario (Listar productos) ---------------------
-    # ---- 100% ----
+    # ---- 90% ----
     # -------------------------------------
 
     /**
@@ -13,7 +13,17 @@
     $controlador = new Controlador();
 
     // Se traen todos los datos de los productos y se guardan en una variable (array)
-    $productos = $controlador->obtenerProductosController();    
+    $productos = $controlador->obtenerProductosController();
+
+
+    // Si se oprimió el botón de eliminar (producto) se recibe el id con GET
+    if(isset($_GET["accion"])){
+        if ($_GET["accion"] == "eliminar_producto") {
+            $controlador->eliminarProductoController();
+        }
+    }
+    
+
  ?>
 
 <div class="card page-header p-0">
@@ -76,7 +86,10 @@
                                 echo '<tr>';
                                     echo '<td>'. $producto['codigo'] .'</td>';
                                     echo '<td>'. $producto['nombre'] .'</td>';
-                                    echo '<td>'. $producto['categoria'] .'</td>';
+                                    // Se obtienen los datos de la categoria para mostrarla en la lista
+                                    $_GET["id"] = $producto["categoria"];
+                                    $categoria = $controlador->obtenerCategoriaController();
+                                    echo '<td>'. $categoria[0]['nombre'] .'</td>';
                                     echo '<td>'. $producto['precio'] .'</td>';
                                     echo '<td>'. $producto['stock'] .'</td>';
                                     

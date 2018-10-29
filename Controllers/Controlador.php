@@ -324,9 +324,7 @@ class Controlador
         }else{
             echo '<script> alert("Error -> No se actualizaron los datos!"); </script>';
         }
-    }
-
-
+    }    
 
 
     # PRODUCTOS ----------------------------------------------------
@@ -337,6 +335,158 @@ class Controlador
         $respuestaController = Datos::obtenerProductosModel();
 
         // Si el array no está vacío, lo retorna, caso contrario devuelve false.
+        if($respuestaController){ return $respuestaController; }
+        else { return false; }
+    }
+
+
+    // Método para enviar al modelo los datos obtenidos del form de agregar producto
+    public function guardarProductoController(){
+        $codigo = $_POST["codigo"];
+        $producto = $_POST["producto"];
+        $categoria = $_POST["categoria"];
+        $precio = $_POST["precio"];
+        $stock = $_POST["stock"];
+        $foto = $_POST["foto"];
+
+        
+        //Para saber el nombre de la foto se manda llamar esta funcion
+        $nombreArchivo = basename($_FILES['foto']['name']);
+        
+        //Se concatena al nombre la carpeta en donde se guardaran todas las fotos cargadas por los usuarios
+        $directorio = 'fotos/' . $nombreArchivo;
+
+        //Para hacer algunas validaciones y el usuario por ejemplo no pase como foto una archivo pdf se extrae la extencion de la foto
+        $extension = pathinfo($directorio , PATHINFO_EXTENSION);
+
+        //Todos los datos obtenidos del formulario son guardados en un objeto para luego ser pasados al modelo en donde serna almacenados en su respectiva tabla
+        $datosProducto = array('codigo' => $codigo,
+                            'producto' => $producto,
+                            'categoria' => $categoria,
+                            'precio' => $precio,
+                            'stock' => $stock,
+                            'foto' => $codigo.'.'.$extension ); //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
+
+
+        //Aqui es donde se hace la validacion de el archivo sea una foto con extensiones de imagenes frecuentes y no un formato .docs o un pdf por ejemplo
+        if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG'){
+            echo '<script> alert("Error al subir el archivo intenta con otro") </sript>';
+        }else{
+
+            //Una vez que se ha cargado la imagen a los archivos temporales de php, esta funcion la mueve de ahi y la coloca en la direccion donde se guardaran las fotos ya con el nombre presonalizado por cada usuario, que es su matricula
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'fotos/'.$usuario . '.' . $extension);
+
+            //Despues de que se ha guardado la imagen en la carpeta, se manda llamar la funcion del modelo en la cual se pasan el objeto con los datos del formulario para ser guardado
+            $respuesta = Datos::guardarProductoModel($datosProducto);
+
+            //Se recibe la respuesta del metodo y si esta es exitosa se manda un mensaje de notificacion al cliente y se reenvia a la lista de todos los productos para que vea la insercion del nuevo producto.
+            if($respuesta){
+                echo '<script> 
+                            alert("Datos guardados correctamente");
+                            window.location.href = "index.php?action=inventario"; 
+                      </script>';
+                //header('index.php?action=alumnos');
+            }else{
+                //En caso de haber un error se queda en la misma pagina y le notifica al ususario
+                echo '<script> alert("Error al guardar") </script>';
+            }
+        }
+    }
+
+
+    //Funcion que permite editar los datos de un producto pasandole los datos por medio de un formualrio
+    public function editarProductoController(){
+        
+        // el codigo no se edita, se queda con el primero (disable en form)
+        $codigo = $_POST["codigo"];
+        $producto = $_POST["producto"];
+        $categoria = $_POST["categoria"];
+        $precio = $_POST["precio"];
+        $stock = $_POST["stock"];
+        //$foto = $_POST["foto"];
+        //$id_producto = $_POST["id"];
+
+        /*
+        $nombreArchivo = basename($_FILES['foto']['name']);
+        
+        $directorio = 'fotos/' . $nombreArchivo;
+
+        $extension = pathinfo($directorio , PATHINFO_EXTENSION);
+        
+
+        //Tambien se compara si el usuario solo quiere actualizar los datos o tambien la foto de perfil, en caso de que solo quiera editar los datos y quiera conservar la foto entra en el if de acontinuacion para almacenar el nombre de la misma foto que tenia previamente
+        if($nombreArchivo == "" ){
+            $foto = $_POST['fotoActual'];
+        }else{
+            
+            if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG'){
+                echo '<script> alert("Error al subir el archivo intenta con otro") </sript>';
+                
+                $foto = $_POST['fotoActual'];
+
+            }else{
+
+                //En caso de que el usuario haya querido ademas de actualizar sus datos en tipo texto, tambien editar la foto, entra aesta parte del if en donde crea una nueva foto, o sobreescibe la existente y la almacena en la variable foto la cual sera almacenada con los datos realizado.
+
+                move_uploaded_file($_FILES['foto']['tmp_name'], 'fotos/'.$id_producto . '.' . $extension);
+
+                $foto = $id_producto . '.' . $extension;
+
+            }
+        }
+        
+        */
+
+
+        //Todos los datos obtenidos del formulario son guardados en un objeto para luego ser pasados al modelo en donde serna almacenados en su respectiva tabla
+        $datosProducto = array('codigo' => $codigo,
+                            'producto' => $producto,
+                            'categoria' => $categoria,
+                            'precio' => $precio,
+                            'stock' => $stock
+                            /*'foto' => $codigo.'.'.$extension*/ ); //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
+        
+        //Se manda ese objeto con los datos al modelo para que los almacenen en la tabla pasada por parametro aqui abajo
+        $respuesta = Datos::editarProductoModel($datosProducto, $_GET['id']);
+        
+        //El metodo responde con un success o un error y se realiza las notificaciones pertinentes al usuario
+        if($respuesta == "success"){
+            
+            echo '<script> 
+                    alert("Datos editados correctamente");
+                    window.location.href = "index.php?action=inventario"; 
+                  </script>';
+            
+        }else{
+            echo '<script> alert("Error al editar") </script>';
+        }
+
+    }
+
+
+    //Método para eliminar un producto
+    public function eliminarProductoController(){
+        // Se recibe y se almacena en una variable la respuesta del modelo
+        // Se pasa como parámetro el id con GET del elemento a eliminar
+        $respuestaController = Datos::eliminarProductoModel($_GET["id"]);
+
+        // Si se eliminó con éxito la categoria el modelo regresa true
+        if($respuestaController){
+            echo '<script>
+                  alert("producto eliminado!");
+                  window.location.href = "index.php?action=inventario";
+                  </script>';
+        }else{
+            echo '<script> alert("Error -> No se eliminó el producto"); </script>';
+        }
+    }
+
+    // Método para enviar los datos de un producto específico a la vista
+    public function obtenerProductoController(){
+        // Se recibe la respuesta de la vista, se pasa como parámetro el id del producto
+        $respuestaController = Datos::obtenerProductoModel($_GET["id"]);
+
+        // Si no trajo un array vacío devuelve el array, sino retorna false
         if($respuestaController){ return $respuestaController; }
         else { return false; }
     }
