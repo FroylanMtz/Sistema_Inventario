@@ -7,7 +7,7 @@
             </div>
             <div class="d-inline-block">
                 <h5>Dashboard</h5>
-                <span> Estadisticas de los productos </span>
+                <span> </span>
             </div>
         </div>
         <div class="col">

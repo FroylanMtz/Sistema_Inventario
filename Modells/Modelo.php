@@ -15,11 +15,11 @@ class Modelo
         }
         //Una vez que action vienen vacio (validnaod en el controlador) enctonces se consulta si la variable $enlacesModel es igual a la cadena index de ser asi se muestre index.php
         else if($enlace == "index"){
-            $pagina = "Views/Paginas/Administrador/dashboard.php";
+            $pagina = "Views/Paginas/Administrador/inventario.php";
         }
         //Validar una LISTA BLANCA 
         else{
-            $pagina = "Views/Paginas/Administrador/dashboard.php";
+            $pagina = "Views/Paginas/Administrador/inventario.php";
         }
 
         

@@ -118,14 +118,16 @@
                             </div>
                         </div>
 
+                        <!-- No se edita el stock desde aquí
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Stock </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">                                    
-                                    <input type="number" class="form-control" name="stock" required placeholder="Stock inicial" value="<?php echo($producto["stock"]) ?>">
+                                    <input type="number" disabled class="form-control" name="stock" required placeholder="Stock inicial" value="<?php echo($producto["stock"]) ?>">
                                 </div>
                             </div>
                         </div>
+                        -->
 
                         <!--
                         <div class="row">

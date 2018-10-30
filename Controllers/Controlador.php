@@ -30,8 +30,8 @@ class Controlador
             //guardar el valor de la variable action en views/modules/navegacion.php en el cual se recibe mediante el metodo get esa variable
             $enlace = $_GET['action'];
         }else{
-
-            $enlace = 'dashboard';
+            // Si no hay un action GET se incluye la vista de inventarios
+            $enlace = 'inventario';
             
         }
 
@@ -69,7 +69,7 @@ class Controlador
                 $_SESSION['contrasenaUsuario'] = $respuesta['password'];
 
 
-                header("location:index.php?action=dashboard");
+                header("location:index.php?action=inventario");
                 //echo 'Bienvenido al sistema';
             }else
             {
@@ -496,11 +496,50 @@ class Controlador
     public function agregarStockController(){
         // Se recibe la respuesta del modelo
         $idProducto = $_GET["id"];
-        $usuario = $_SESSION["usuario"];
+        $usuario = $_SESSION["idUsuario"];        
+        $fecha = date("Y-m-d");
+        $hora = date("h:i");
         $referencia = $_POST["referencia"];
-        $stock = $_POST["stock"];
+
+        // Bandera para agregar stock
+        $agregar = true;
+        if($_POST["stock"] < 1){
+            echo '<script>
+                  alert("cantidad no permitida!");
+                  window.location.href = "index.php?action=inventario";
+                  </script>';
+            // false (no se agregará nada)
+            $agregar = false;
+        }
+
+        $stock = $_POST["stock"];         
         
-        //$respuestaController = Datos::agregarStockModel();
+        // Se recibe la respuesta del modelo si y solo si la bandera es true
+        if($agregar)        
+            $respuestaController = Datos::agregarStockModel($idProducto,$usuario,$fecha,$hora,$referencia,$stock);        
+
+        // Si se agregaron los datos con éxito
+        if($respuestaController){            
+            echo '<script>
+                  alert("Stock modificado!");
+                  window.location.href = "index.php?action=inventario";
+                  </script>';
+        }else{
+            echo '<script> alert("Error XD"); </script>';
+        }
+    }
+
+
+
+    # HISTORIALES ---------------------------------------------
+        # --------------------------
+    public function obtenerHistorialController(){
+        
+        // Se recibe la respuesta del modelos, se pasa como parámetro el id del producto con GET
+        $respuestaController = Datos::obtenerHistorialModel($_GET["id"]);
+
+        if($respuestaController){ return $respuestaController; }
+        else { return false; }
     }
 }
 

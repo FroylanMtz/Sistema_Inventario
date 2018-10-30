@@ -2,7 +2,7 @@
     
     # Inventario (Listar productos) ---------------------
     # ---- 90% ----
-    # -------------------------------------
+    # ---------------------------------------------------
 
     /**
     * Inventario de Todos los productos, con opción de ver, editar y eliminar
@@ -33,11 +33,13 @@
                 <i class="icofont icofont-home"></i>
             </div>
             <div class="d-inline-block">
-                <?php 
+                <?php                     
                     if ($productos == false) {
                         echo "<h5>Inventario (No hay productos)</h5>";
+                    }else{
+                        echo "<h5> Inventario </h5>";
                     }
-                 ?>
+                 ?>                 
                 <span> Productos </span>
             </div>
         </div>

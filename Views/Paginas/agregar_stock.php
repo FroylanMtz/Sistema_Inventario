@@ -4,15 +4,16 @@
     # ---- 100% ----
     # -------------------------------------
     //Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo que cominican a la vista con el controlador
-    $controlador = new Controlador();
-
+    $controlador = new Controlador();    
 
     // Si se presionó el botón de guardar datos
     if (isset($_POST["guardar"])) {
         // Se llama al método del controlador para preparar los datos        
         //echo $_SESSION["usuario"];
-        //$controlador->agregarStockController();        
+        $controlador->agregarStockController();        
+        //echo date("h:i");
     }
+
     
 ?>
 

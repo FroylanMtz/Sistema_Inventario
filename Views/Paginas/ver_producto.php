@@ -1,9 +1,10 @@
 <?php
 
-    # Editar Productos ---------------------
-    # ---- 100% ----
+    # Ver producto ---------------------
+    # ---- 90% ----
     # -------------------------------------
-    //Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo que cominican a la vista con el controlador
+    //Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo 
+    // que comunican a la vista con el controlador
     $controlador = new Controlador();
 
 
@@ -25,9 +26,11 @@
 
 
 
-    // Si se oprimio el boton de agregar o eliminar stock
-    if(isset($_POST["agregar"])){
-
+    // Si hay valor por GET (el id del producto es el que se requiere)
+    if(isset($_GET["id"])){
+        // Se llama al método del controlador para recibir los datos del historial de movimientos de 
+        //stock de determinado producto
+        $historial = $controlador->obtenerHistorialController();        
     }
 ?>
 
@@ -115,7 +118,7 @@
                         <!--Columnas de la cabecera de la tabla-->
                         <th> Fecha </th>
                         <th> Hora </th>
-                        <th> Descripción </th>
+                        <th> Descripción (usuario) </th>
                         <th> Total </th>                        
                         <th> Referencia </th>
                         
@@ -124,12 +127,25 @@
                 </thead>
                 <tbody>
                     <?php
-                        //La tabla es llenada dinamicamente creando una nueva fila por cada registro en la tabla, toda la ifnormacion que aqui se despliega se trajo desde el controler con el metodo anteriormente definido
-
-                        // Si no hay productos no muestran datos (y así no marca error)
-                        //if($productos){
+                        // Ciclo foreach para ver el historial de cambios de stock de un producto
+                    // Si no ha habido movimientos no muestra nada para que no salgan errores
+                    if($historial){
+                        foreach($historial as $historia): // Inicio foreach
+                            echo "<tr>";
+                            echo "<td>" . $historia["fecha"] . "</td>";
+                            echo "<td>" . $historia["nota"] . "</td>";
                             
-                        //}                        
+                            // Obtener el nombre del usuario
+                            $_GET["id"] = $historia["usuario"];
+                            $usuario = $controlador->obtenerDatosUsuario();
+
+                            echo "<td>" . $usuario[0]["nombre"] . " agregó ". $historia["cantidad"] . " producto(s)</td>";
+                            //echo "<td>" . $historia["usuario"] . "</td>";
+                            echo "<td>" . $historia["cantidad"] . "</td>";
+                            echo "<td>" . $historia["referencia"] . "</td>";
+                            echo "</tr>";
+                        endforeach; // Termina foreach
+                    }
                     ?>
                 </tbody>
             </table>

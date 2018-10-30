@@ -8,7 +8,7 @@ require_once('Modells/Modelo.php');
 require_once('Modells/crud.php');
 require_once('Controllers/Controlador.php');
 
-
+date_default_timezone_set('UTC');
 //Para poder ver el template o plantilla, se hace una peticion mediante a un controlar
 //creamos el objeto:
 $controlador = new Controlador();

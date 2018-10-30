@@ -15,7 +15,8 @@
         <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Administración</div>
 
         <ul class="pcoded-item pcoded-left-item">
-        
+            
+            <!-- Quitando el dashboard de la navegación
             <li class="pcoded-hasmenu">
                 <a href="index.php?action=dashboard">
                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
@@ -24,7 +25,7 @@
                 </a>
                 
             </li>
-
+            -->
 
             <li class="pcoded-hasmenu">
                 <a href="#!">

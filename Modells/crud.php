@@ -343,4 +343,65 @@ class Datos extends Conexion{
         if($respuestaModel) { return $respuestaModel; }
         else { return false; }
     }
+
+
+    // Método para agregar stock a las diferentes tablas que los manejen
+    public function agregarStockModel($idProducto,$usuario,$fecha,$hora,$referencia,$stock){
+
+        # OBTENER EL STOCK DE UN PRODUCTO EN ESPECÍFICO -----------------------------
+        $sql = "SELECT stock FROM productos WHERE id=?";
+        $stmt_id = Conexion::conectar()->prepare($sql);
+        // Se ejecuta, se pasa como parámetro el id del producto
+        $stmt_id->execute([$idProducto]);
+        // En la variable se almacena el array donde viene el stock actual
+        $stock_actual = $stmt_id->fetch();        
+
+        // Se hace un casteo a las variables ya que están como strings
+        $stock_actual[0] = (int)$stock_actual[0];
+        $stock = (int)$stock;
+        // Se suman el stock actual y el nuevo
+        $stock_total = $stock_actual[0]+$stock;
+
+
+
+        #SE ACTUALIZA EL STOCK DEL PRODUCTO (TABLA PRODUCTOS) -----------------------
+        // Consulta para actualizar el stock del producto (stock_total)
+        $sql_actualizar = "UPDATE productos SET stock=? WHERE id=?";
+        // Se prepara la consulta
+        $stmt_actualizar = Conexion::conectar()->prepare($sql_actualizar);
+        // Se ejecuta, se pasan los parámetros del id del producto y el stock nuevo
+        $stmt_actualizar->execute([$stock_total,$idProducto]);
+
+
+
+        # SE INSERTAN LOS DATOS EN LA TABLA HISTORIALES -----------------------------
+        $sql_t = "INSERT INTO historiales (producto,usuario,fecha,nota,referencia,cantidad) VALUES(?,?,?,?,?,?)";
+        $stmt = Conexion::conectar()->prepare($sql_t);
+
+        // Se ejecuta la consulta, si todo va bien retorna true
+        if($stmt->execute([$idProducto,$usuario,$fecha,$hora,$referencia,$stock])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public function obtenerHistorialModel($idProducto){
+        // Consulta sql
+        $sql = "SELECT * FROM historiales WHERE producto=?";
+
+        // Se pasa la consulta como parámetro del método prepare
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        // Se ejecuta la consulta, se pasa como parámetro el argumento de la función
+        $stmt->execute([$idProducto]);
+
+        // Se almacena el resultado (array asociativo)
+        $respuestaModel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Si el array no es vacío retorna dicho array, sino retorna false.
+        if($respuestaModel) { return $respuestaModel; }
+        else { return false; }
+    }
 }
