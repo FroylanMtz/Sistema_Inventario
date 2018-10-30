@@ -111,7 +111,7 @@
 </html>
 
 <?php
-    $controlador= new Controlador();
+    $controlador = new Controlador();
 
     if(isset($_POST['usuario']) ){
         $controlador -> iniciarSesion();

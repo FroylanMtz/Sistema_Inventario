@@ -67,9 +67,13 @@ class Controlador
                 $_SESSION['nombre'] = $respuesta['nombre']. ' ' . $respuesta['apellido'];
                 $_SESSION['idUsuario'] = $respuesta['id'];
                 $_SESSION['contrasenaUsuario'] = $respuesta['password'];
+                
+                $_SESSION['foto'] = $respuesta['ruta_imagen'];
 
 
-                header("location:index.php?action=inventario");
+                //header("location:index.php?action=inventario");
+
+                echo '<script> window.location.href = "index.php?action=inventario"; </script>';
                 //echo 'Bienvenido al sistema';
             }else
             {
@@ -87,32 +91,31 @@ class Controlador
 
     # USUARIOS ------------------------------------------------
         # ---------------------------------
-    //Funcion que trae a todos los alumnos registrados en la dicha tabla para mostrarlos en la pagina de alumnos.php, se muestra ademas un boton para actualizar y eliminar para administrarlos
+    //Funcion que trae a todos los usuarios registrados en la dicha tabla para mostrarlos en la pagina de usuarios.php, se muestra ademas un boton para actualizar y eliminar
     public function obtenerDatosUsuarios()
     {
         $datosDeUsuarios = array();
         
-        //Esta funcion del modelo no pide la tabla ya que se trata de una union de todas las tres tablas existentes para traer todos los datos completos y entendibles
         $datosDeUsuarios = Datos::traerDatosUsuarios();
 
         return $datosDeUsuarios;
     }
 
-    //Funcion que trae los datos de UN solo alumno, esto con el fin de actualizarlo en la vista editar_alumno, para saber que usario se va a editar se manda un parametro GET llamado id en el cual va el id del usuario que en este caso es la matricula
+    //Funcion que trae los datos de UN solo usuario, esto con el fin de actualizarlo en la vista editar_usuario, para saber que usario se va a editar se manda un parametro GET llamado id en el cual va el id del usuario que en este caso es la matricula
     public function obtenerDatosUsuario(){
 
         $idUsuario = $_GET['id'];
 
         $datosDeUsuario = array();
         
-        //Se manda llamar el metodo del modelo pasandole como parametro la matricula del usuario a traer los datos, de igual forma se hace una union de tablas para obtener la informacion mas entendible, por ello no se pasa el nombre de la tabla como parametro
+        //Se manda llamar el metodo del modelo pasandole como parametro la id del usuario a traer los datos
         $datosDeUsuario = Datos::obtenerDatosDeUsuarioId($idUsuario);
 
         return $datosDeUsuario;
     }
 
 
-    //Funcion que se manda llamar al registrar un usuario nuevo a la aplicacion, todos los datos son enviados a traves de un formulario el cual esta funcion cacha con los parametros POST identificandolos con el respectivo nombre de campo de la vista agregar_alumno.php
+    //Funcion que se manda llamar al registrar un usuario nuevo a la aplicacion, todos los datos son enviados a traves de un formulario el cual esta funcion cacha con los parametros POST identificandolos con el respectivo nombre de campo de la vista agregar_usuario.php
     public function guardarDatosUsuario(){
         
         //Datos recibidos de la vista, necesarios para identificar al usuario
@@ -174,7 +177,7 @@ class Controlador
         $contrasena = $_POST['contrasena'];
         $correo = $_POST['correo'];
         
-        $nombreArchivo = basename($_FILES['foto']['name']);
+        $nombreArchivo = basename($s_FILES['foto']['name']);
         
         $directorio = 'fotos/' . $nombreArchivo;
 
@@ -343,19 +346,20 @@ class Controlador
 
     // Método para enviar al modelo los datos obtenidos del form de agregar producto
     public function guardarProductoController(){
+        
         $codigo = $_POST["codigo"];
         $producto = $_POST["producto"];
         $categoria = $_POST["categoria"];
         $precio = $_POST["precio"];
         $stock = $_POST["stock"];
-        $foto = $_POST["foto"];
+        //$foto = $_POST["foto"];
 
         
         //Para saber el nombre de la foto se manda llamar esta funcion
         $nombreArchivo = basename($_FILES['foto']['name']);
         
         //Se concatena al nombre la carpeta en donde se guardaran todas las fotos cargadas por los usuarios
-        $directorio = 'fotos/' . $nombreArchivo;
+        $directorio = 'fotosProductos/' . $nombreArchivo;
 
         //Para hacer algunas validaciones y el usuario por ejemplo no pase como foto una archivo pdf se extrae la extencion de la foto
         $extension = pathinfo($directorio , PATHINFO_EXTENSION);
@@ -375,7 +379,7 @@ class Controlador
         }else{
 
             //Una vez que se ha cargado la imagen a los archivos temporales de php, esta funcion la mueve de ahi y la coloca en la direccion donde se guardaran las fotos ya con el nombre presonalizado por cada usuario, que es su matricula
-            move_uploaded_file($_FILES['foto']['tmp_name'], 'fotos/'.$usuario . '.' . $extension);
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'fotosProductos/'. $codigo . '.' . $extension);
 
             //Despues de que se ha guardado la imagen en la carpeta, se manda llamar la funcion del modelo en la cual se pasan el objeto con los datos del formulario para ser guardado
             $respuesta = Datos::guardarProductoModel($datosProducto);

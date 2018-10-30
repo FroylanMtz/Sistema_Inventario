@@ -67,7 +67,16 @@
                 <center>
                 <div class="m-b-20">
                      <h4 class="sub-title"> Datos del producto </h4> 
-
+                        
+                        <div class="row">
+                            
+                            <label class="col-sm-4 col-lg-12 col-form-label"> 
+                            
+                                <img src="fotosProductos/<?php echo $producto["ruta_img"]; ?>" height="300px" width="300px" />
+                            
+                            </label>
+                            
+                        </div>  
 
                         <input type="hidden" name="id" value="<?= $producto[0]['id'] ?>">
                         
@@ -87,7 +96,7 @@
                         </div>
                         
                         <div class="row">
-                            <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Precio:</strong> <?php echo($producto["precio"]) ?></label>                           
+                            <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Precio: $ </strong> <?php echo($producto["precio"]) ?></label>                           
                         </div>
 
                         <div class="row">

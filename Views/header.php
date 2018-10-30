@@ -34,6 +34,7 @@
                             <li class="user-profile header-notification">
                                 
                                 <a href="#!">
+                                    <img src="fotos/<?= $_SESSION['foto'] ?>" class="img-radius" alt="User-Profile-Image">
                                     <span> <?= $_SESSION['nombre'] ?> </span> <i class="ti-angle-down"></i>
                                 </a>
                                 

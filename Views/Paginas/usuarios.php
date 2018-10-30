@@ -61,7 +61,7 @@ $datosUsuario = $controlador->obtenerDatosUsuarios();
                                 echo '<td>'. $datosUsuario[$i]['nombre_usuario'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['correo'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['fecha_registro'] .'</td>';
-                                echo '<td>'. $datosUsuario[$i]['ruta_imagen'] .'</td>';
+                                echo '<td> <img src="fotos/'. $datosUsuario[$i]['ruta_imagen'] .'" height="50px" width="50px"> </td>';
                                 //Estos dos de abajo son los botones, se puede observar que estan listos para redirigir el flujo de la app a una pagina que se ellama editar y eliminar, teniendo un parametro el cual es la matricula del alumno a administrar
 
                                 echo '<td> <a href="index.php?action=editar_usuario&id='.$datosUsuario[$i]['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
