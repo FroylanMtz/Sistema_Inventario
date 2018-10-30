@@ -22,7 +22,7 @@ class Datos extends Conexion{
         $r = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $r;
-
+        
     }
 
     //Funcion que almacena todos los datos de un alumno en su respectiva tabla, tabmien pasada por parametro (el nombre)

@@ -493,7 +493,7 @@ class Controlador
     }
 
     //Método para agregar stock
-    public function agregarStockController(){
+    public function agregarStockController($e=null){
         // Se recibe la respuesta del modelo
         $idProducto = $_GET["id"];
         $usuario = $_SESSION["idUsuario"];        
@@ -512,7 +512,10 @@ class Controlador
             $agregar = false;
         }
 
-        $stock = $_POST["stock"];         
+        if($e==-1)
+            $stock = (int)$_POST["stock"]*$e;
+        else
+            $stock = $_POST["stock"];     
         
         // Se recibe la respuesta del modelo si y solo si la bandera es true
         if($agregar)        
