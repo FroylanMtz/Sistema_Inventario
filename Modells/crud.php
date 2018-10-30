@@ -67,7 +67,7 @@ class Datos extends Conexion{
         $stmt->bindParam(5, $datosUsuario['foto'] );
         $stmt->bindParam(6, $idUsusario );
         
-        print_r($datosUsuario);
+        //print_r($datosUsuario);
         echo ' id Usuario: ' . $idUsusario;
 
         //Y son ejecutados y notificados al controlador para que este les notifique a las vistas para que den un mensaje amigable al usuario
@@ -222,8 +222,8 @@ class Datos extends Conexion{
         # -----------------------
     // Método para obtener todos los productos
     public function obtenerProductosModel(){
-        // Consulta sql
-        $sql = "SELECT * FROM productos";
+        // Consulta sql, Productos ordenados por categoria
+        $sql = "SELECT * FROM productos ORDER BY categoria";
 
         // Se prepara la consulta
         $stmt = Conexion::conectar()->prepare($sql);

@@ -177,7 +177,7 @@ class Controlador
         $contrasena = $_POST['contrasena'];
         $correo = $_POST['correo'];
         
-        $nombreArchivo = basename($s_FILES['foto']['name']);
+        $nombreArchivo = basename($_FILES['foto']['name']);
         
         $directorio = 'fotos/' . $nombreArchivo;
 
