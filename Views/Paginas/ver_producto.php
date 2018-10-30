@@ -139,7 +139,7 @@
                             $_GET["id"] = $historia["usuario"];
                             $usuario = $controlador->obtenerDatosUsuario();
 
-                            echo "<td>" . $usuario[0]["nombre"] . " agregó ". $historia["cantidad"] . " producto(s)</td>";
+                            echo "<td>" . $usuario[0]["nombre_usuario"] . " agregó ". $historia["cantidad"] . " producto(s)</td>";
                             //echo "<td>" . $historia["usuario"] . "</td>";
                             echo "<td>" . $historia["cantidad"] . "</td>";
                             echo "<td>" . $historia["referencia"] . "</td>";
