@@ -17,15 +17,6 @@
     // a través del método del controlador
     $datosCategorias = $controlador->datosCategoriasController();    
 
-
-
-    // Si se oprimió el botón de eliminar (categoría) se recibe el id con GET
-    if(isset($_GET["accion"])){
-        if ($_GET["accion"] == "eliminar_categoria") {
-            $controlador->eliminarCategoriaController();
-        }
-    }
-
  ?>
 
 
@@ -78,7 +69,7 @@
                         <!-- Botones para editar y borrar -->
                         <td><a type="button" class="btn btn-warning" href="index.php?action=editar_categoria&id=<?php echo($categoria["id"]); ?>"><i class="fas fa-edit"></i> </a></td>
 
-                        <td><a type="button" class="btn btn-danger" href="index.php?action=categorias&accion=eliminar_categoria&id=<?php echo($categoria["id"]); ?>"> <i class="fas fa-trash-alt" ></i> </a></td>
+                        <td><a type="button" class="btn btn-danger" href="index.php?action=eliminar_categoria&id=<?php echo($categoria["id"]); ?>"> <i class="fas fa-trash-alt" ></i> </a></td>
                     <?php echo "</td>"; ?>
                 <?php endforeach; // importante el punto y coma ; ?>                    
             </tbody>

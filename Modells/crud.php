@@ -194,7 +194,7 @@ class Datos extends Conexion{
         $stmt->execute([$id]);
 
         // Se almacena en un array lo que trajo la consulta
-        $respuestaModel = $stmt->fetchAll();
+        $respuestaModel = $stmt->fetch();
 
         // Si el array asociativo trae datos se retorna ese array, caso contrario false.
         if($respuestaModel) { return $respuestaModel; }
