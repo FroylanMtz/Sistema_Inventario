@@ -1,9 +1,10 @@
-<?php
-	
-	#Eliminar USUARIOS -------------------
+<?php 
+
+	#ElIMINAR PRODUCTO -------------------
 	#----100%-----
 	#-------------------------------------
-	
+
+
 	// Se declara un objeto del tipo controlador
 	$controlador = new Controlador();
 	//Valida que se accione el metodo solo si se hace clic en el boton y no cuando se cargue pagina
@@ -11,16 +12,15 @@
 		// Se compara que la contraseña coincida con la del usuario en sesión (importante uso de MD5)
 	    if(MD5($_POST['contrasena']) == $_SESSION["contrasenaUsuario"]){
 	    	// Se llama al método para eliminar usuario
-	        $controlador -> eliminarUsuario();	        
+	        $controlador -> eliminarProductoController();
 	    }else{
 	    	echo "<script> alert('Contraseña incorrecta!'); </script>";
 	    }
 	}
 
+	// Se traen todos los datos de un producto en específico
+	$datosProducto = $controlador->obtenerProductoController();	
 
-	//Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo que cominican a la vista con el controlador
-
-	$datosUsuario = $controlador->obtenerDatosUsuario();
 ?>
 
 
@@ -32,16 +32,16 @@
                 <i class="ti-user"></i>
             </div>
             <div class="d-inline-block">
-                <h5> Eliminar usuario: <strong> <?php echo $datosUsuario[0]["nombre_usuario"]; ?> </strong> </h5>
+                <h5> Eliminar producto: <strong> <?php echo $datosProducto["nombre"]." (".$datosProducto["codigo"].")"; ?> </h5>
                 <span> Eliminar </span>
             </div>
         </div>
         <div class="col">
         <div class="page-header-breadcrumb">
             <ul class="breadcrumb-title">
-                <li class="breadcrumb-item"><a href="index.php?action=dashboard"> Inicio </a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
-                <li class="breadcrumb-item"><a href="index.php?action=eliminar_usuario&id=<?php echo($datosUsuario[0]["id"]) ?>"> Eliminar Usuario </a>
+                <li class="breadcrumb-item"><a href="index.php?action=eliminar_producto&id=<?php echo($datosProducto["id"]) ?>"> Eliminar Producto </a>
                 </li>
             </ul>
         </div>

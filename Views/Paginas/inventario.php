@@ -16,14 +16,6 @@
     $productos = $controlador->obtenerProductosController();
 
 
-    // Si se oprimió el botón de eliminar (producto) se recibe el id con GET
-    if(isset($_GET["accion"])){
-        if ($_GET["accion"] == "eliminar_producto") {
-            $controlador->eliminarProductoController();
-        }
-    }
-    
-
  ?>
 
 <div class="card page-header p-0">
@@ -102,7 +94,7 @@
 
                                     echo '<td> <a href="index.php?action=editar_producto&id='.$producto['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
                                     
-                                    echo '<td>  <a href="index.php?action=inventario&accion=eliminar_producto&id='.$producto['id'].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
+                                    echo '<td>  <a href="index.php?action=eliminar_producto&id='.$producto['id'].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
                                 echo '</tr>';
                             endforeach; // Fin foreach
                         }                        
