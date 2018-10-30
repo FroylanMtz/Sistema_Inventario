@@ -63,7 +63,7 @@
             	</div>
 
                 <div class="card-footer">
-                    <center> <input style="background-color: #DC0500" onmouseover="this.style.color='#010101'" type="submit" class="btn btn-danger input-lg" value="Eliminar" /> </center>
+                    <center> <input style="background-color: #DC0500" onmouseover="this.style.color='#010101'" onmouseout="this.style.color='#FFFDDD'" type="submit" class="btn btn-danger input-lg" value="Eliminar" /> </center>
                 </div>
             </form>
             </center>
