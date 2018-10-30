@@ -1,16 +1,17 @@
 <?php
 	
 	#Eliminar USUARIOS -------------------
-	#----70%-----
+	#----100%-----
 	#-------------------------------------
 	
 	// Se declara un objeto del tipo controlador
 	$controlador = new Controlador();
 	//Valida que se accione el metodo solo si se hace clic en el boton y no cuando se cargue pagina
-	if(isset($_GET['accion'])) {
-	    if( $_GET['accion'] == "eliminar"){
+	if(isset($_POST['eliminar'])) {
+		// Se compara que la contraseña coincida con la del usuario en sesión (importante uso de MD5)
+	    if(MD5($_POST['contrasena']) == $_SESSION["contrasenaUsuario"]){
 	    	// Se llama al método para eliminar usuario
-	        $controlador -> eliminarUsuario();
+	        $controlador -> eliminarUsuario();	        
 	    }
 	}
 
@@ -54,6 +55,7 @@
             <center>
             <h5>Para concretar la acción ingrese su contraseña</h5><br>
 
+            <!-- FORM PARA ELIMINAR USUARIOS -->
             <form method="POST">
             	<div class="col-sm-8 col-lg-5">
             		<div class="input-group">
@@ -63,7 +65,7 @@
             	</div>
 
                 <div class="card-footer">
-                    <center> <input style="background-color: #DC0500" onmouseover="this.style.color='#010101'" onmouseout="this.style.color='#FFFDDD'" type="submit" class="btn btn-danger input-lg" value="Eliminar" /> </center>
+                    <center> <input style="background-color: #DC0500" onmouseover="this.style.color='#010101'" onmouseout="this.style.color='#FFFDDD'" type="submit" class="btn btn-danger input-lg" value="Eliminar" name="eliminar" /> </center>
                 </div>
             </form>
             </center>
