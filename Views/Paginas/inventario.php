@@ -8,7 +8,7 @@
     * Inventario de Todos los productos, con opción de ver, editar y eliminar
     */
 
-
+    
     // Se declara un objeto del tipo controlador
     $controlador = new Controlador();
 

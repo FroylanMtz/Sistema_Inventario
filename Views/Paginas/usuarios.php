@@ -62,11 +62,11 @@ $datosUsuario = $controlador->obtenerDatosUsuarios();
                                 echo '<td>'. $datosUsuario[$i]['correo'] .'</td>';
                                 echo '<td>'. $datosUsuario[$i]['fecha_registro'] .'</td>';
                                 echo '<td> <img src="fotos/'. $datosUsuario[$i]['ruta_imagen'] .'" height="50px" width="50px"> </td>';
-                                //Estos dos de abajo son los botones, se puede observar que estan listos para redirigir el flujo de la app a una pagina que se ellama editar y eliminar, teniendo un parametro el cual es la matricula del alumno a administrar
+                                //Estos dos de abajo son los botones, se puede observar que estan listos para redirigir el flujo de la app a una pagina que se llama editar y eliminar, teniendo un parametro el cual es la matricula del alumno a administrar
 
                                 echo '<td> <a href="index.php?action=editar_usuario&id='.$datosUsuario[$i]['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
                                 
-                                echo '<td>  <a href="index.php?action=usuarios&accion=eliminar_usuario&id='.$datosUsuario[$i]['id'].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
+                                echo '<td>  <a href="index.php?action=eliminar_usuario&id='.$datosUsuario[$i]['id'].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
                             echo '</tr>';
                         }
                     ?>
@@ -75,14 +75,3 @@ $datosUsuario = $controlador->obtenerDatosUsuarios();
         </div>
     </div>
 </div>
-
-<?php
-
-//Valida que se accion el metodo solo si se hace clic en el boton y no cuando se cargue pagina
-if(isset($_GET['accion'])) {
-    if( $_GET['accion'] == "eliminar_usuario"){
-        $controlador -> eliminarUsuario();
-    }
-}
-
-?>
