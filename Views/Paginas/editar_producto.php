@@ -59,9 +59,9 @@
 
                     <form method="POST" enctype="multipart/form-data">
 
-                        <input type="hidden" name="fotoActual" value="<?= $producto[0]['ruta_img'] ?>">
+                        <input type="hidden" name="fotoActual" value="<?= $producto['ruta_img'] ?>">
 
-                        <input type="hidden" name="id" value="<?= $producto[0]['id'] ?>">
+                        <input type="hidden" name="id" value="<?= $producto['id'] ?>">
 
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Código </label>
@@ -129,9 +129,9 @@
                         </div>
                         -->
 
-                        <!--
+                        
                         <div class="row">
-                            <label class="col-sm-4 col-lg-2 col-form-label">Foto</label>
+                            <label class="col-sm-4 col-lg-2 col-form-label">Imagen</label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"><i class="fas fa-image"></i></span>
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        -->
+                        
                         
 
                         <div class="card-footer">

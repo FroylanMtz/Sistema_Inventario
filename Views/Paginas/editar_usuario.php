@@ -24,7 +24,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
             <ul class="breadcrumb-title">
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
-                <li class="breadcrumb-item"><a href="index.php?action=usuarios"> Nuevo Usuario </a>
+                <li class="breadcrumb-item"><a href="#!"> Editar Usuario </a>
                 </li>
             </ul>
         </div>

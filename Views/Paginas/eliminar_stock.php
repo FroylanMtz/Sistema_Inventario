@@ -22,7 +22,7 @@
     <div class="card-block front-icon-breadcrumb row align-items-end">
         <div class="breadcrumb-header col">
             <div class="big-icon">
-                <i class="ti-plus"></i>
+                <i class="ti-minus"></i>
             </div>
             <div class="d-inline-block">
                 <h5> Eliminar Stock </h5>
@@ -70,14 +70,14 @@
                             <label class="col-sm-4 col-lg-2 col-form-label"> Stock </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">                                    
-                                    <input type="number" class="form-control" name="stock" required placeholder="Stock agregado">
+                                    <input type="number" class="form-control" name="stock" required placeholder="Ingresar cantidad">
                                 </div>
                             </div>
                         </div>                       
                         
 
                         <div class="card-footer">
-                            <center> <input type="submit" class="btn btn-primary input-lg" name="guardar" value="Guardar Datos" /> </center>
+                            <center> <input type="submit" class="btn btn-danger input-lg" name="guardar" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>

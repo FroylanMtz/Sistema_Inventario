@@ -64,7 +64,7 @@
                         <th> Categoria </th>
                         <th> Precio </th>                        
                         <th> Stock </th>
-                        
+                        <th> Imagen </th>
                         <th>Detalles</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
@@ -92,7 +92,8 @@
                                     
                                     echo '<td>'. $producto['precio'] .'</td>';
                                     echo '<td>'. $producto['stock'] .'</td>';
-                                    
+                                    echo '<td> <img src="fotosProductos/'. $producto['ruta_img'] .'" height="50px" width="50px"> </td>';
+
                                     
                                     //Estos dos de abajo son los botones, se puede observar que estan listos para redirigir el flujo de la app a una pagina que se ellama ver, editar y eliminar, teniendo un parametro el cual es el id del producto
 

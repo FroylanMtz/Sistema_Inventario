@@ -9,8 +9,17 @@
 
     // Si se presionó el botón de guardar datos
     if (isset($_POST["guardar"])) {
-        // Se llama al método del controlador para preparar los datos
-        $controlador->guardarProductoController();
+        // Antes de guardar se verifica que el código de producto ya existe, si existe se coloca el mensaje
+        // correspondiente al usuario
+        if($controlador->existeCodigoController()){
+            // Se llama al método del controlador para preparar los datos
+            $controlador->guardarProductoController();
+        }else{
+            echo '<script> 
+                    alert("El código ya existe, ingrese un nuevo código");                            
+                </script>';
+        }
+        
     }
 
     // Se obtienen los datos de las categorias para extraer los nombre y mostrarlos en el form

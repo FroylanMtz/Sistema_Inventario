@@ -344,6 +344,15 @@ class Controlador
     }
 
 
+    //Método para verificar si existe un código
+    public function existeCodigoController(){
+        // Se recibe la respuesta del modelo, se pasa como parámetro el código con POST
+        $respuestaController = Datos::existeCodigoModel($_POST["codigo"]);
+
+        if($respuestaController) { return true; }
+        else { return false; }
+    }
+
     // Método para enviar al modelo los datos obtenidos del form de agregar producto
     public function guardarProductoController(){
         
@@ -409,12 +418,12 @@ class Controlador
         $precio = $_POST["precio"];
         //$stock = $_POST["stock"];
         //$foto = $_POST["foto"];
-        //$id_producto = $_POST["id"];
+        $id_producto = $_POST["id"];
 
-        /*
+        
         $nombreArchivo = basename($_FILES['foto']['name']);
         
-        $directorio = 'fotos/' . $nombreArchivo;
+        $directorio = 'fotosProductos/' . $nombreArchivo;
 
         $extension = pathinfo($directorio , PATHINFO_EXTENSION);
         
@@ -424,7 +433,7 @@ class Controlador
             $foto = $_POST['fotoActual'];
         }else{
             
-            if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG'){
+            if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG' && $extension != 'jpeg' && $extension != 'JPEG'){
                 echo '<script> alert("Error al subir el archivo intenta con otro") </sript>';
                 
                 $foto = $_POST['fotoActual'];
@@ -433,22 +442,22 @@ class Controlador
 
                 //En caso de que el usuario haya querido ademas de actualizar sus datos en tipo texto, tambien editar la foto, entra aesta parte del if en donde crea una nueva foto, o sobreescibe la existente y la almacena en la variable foto la cual sera almacenada con los datos realizado.
 
-                move_uploaded_file($_FILES['foto']['tmp_name'], 'fotos/'.$id_producto . '.' . $extension);
+                move_uploaded_file($_FILES['foto']['tmp_name'], 'fotosProductos/'.$codigo . '.' . $extension);
 
-                $foto = $id_producto . '.' . $extension;
+                $foto = $codigo . '.' . $extension;
 
             }
         }
         
-        */
+        
 
 
         //Todos los datos obtenidos del formulario son guardados en un objeto para luego ser pasados al modelo en donde serna almacenados en su respectiva tabla
         $datosProducto = array('codigo' => $codigo,
                             'producto' => $producto,
                             'categoria' => $categoria,
-                            'precio' => $precio );
-                            /*'foto' => $codigo.'.'.$extension*/  //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
+                            'precio' => $precio,
+                            'foto' => $foto);  //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
         
         //Se manda ese objeto con los datos al modelo para que los almacenen en la tabla pasada por parametro aqui abajo
         $respuesta = Datos::editarProductoModel($datosProducto, $_GET['id']);

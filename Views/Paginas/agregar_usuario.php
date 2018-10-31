@@ -20,7 +20,7 @@ $controlador = new Controlador();
             <ul class="breadcrumb-title">
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
-                <li class="breadcrumb-item"><a href="index.php?action=usuarios"> Nuevo Usuario </a>
+                <li class="breadcrumb-item"><a href="#!"> Nuevo Usuario </a>
                 </li>
             </ul>
         </div>

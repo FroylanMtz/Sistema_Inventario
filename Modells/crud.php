@@ -241,7 +241,26 @@ class Datos extends Conexion{
         else { return false; }
     }
 
+    
 
+    // Método para verificar si ya existe un código de un producto
+    // Recibe el código como parámetro
+    public function existeCodigoModel($codigo){
+        // Se guarda la consulta
+        $sql  = "SELECT codigo FROM productos WHERE codigo = ?";
+        // Se prepara la consulta
+        $stmt = Conexion::conectar()->prepare($sql);
+        // Se ejecuta la consulta, pasándole como parámetro el código
+        $stmt->execute([$codigo]);
+
+        // Se guarda en un array el resultado de la consulta, si el array está vacío 
+        // quiere decir que no existe ese código por lo tanto retorna true, sino false.
+        $respuestaModel = $stmt->fetch();
+        if($respuestaModel == false) { return true; }
+        else { return false; }
+    }
+
+    
     // Método para guardar el producto
     public function guardarProductoModel($datosProducto){
 
@@ -288,17 +307,15 @@ class Datos extends Conexion{
         $categoria = $stmt_id->fetch();        
 
         //Se prepara el query con el comando UPDATE -> DE EDITAR, O ACTUALIZAR
-        $stmt = Conexion::conectar()->prepare("UPDATE productos SET codigo = ?, nombre = ?, precio = ?, categoria = ? WHERE id = ?");
-        
-        $id = 5;
-        $nombre = "el nombre";
+        $stmt = Conexion::conectar()->prepare("UPDATE productos SET codigo = ?, nombre = ?, precio = ?, categoria = ?, ruta_img = ? WHERE id = ?");
+                        
         //Se relacionan todos los parametros con los pasados en el arreglo asociativo desde el controlador
         $stmt->bindParam(1, $datosProducto['codigo'] );
-        $stmt->bindParam(2, $datosProducto['producto']); // Se queda nulo
+        $stmt->bindParam(2, $datosProducto['producto']); 
         $stmt->bindParam(3, $datosProducto['precio'] );        
         $stmt->bindParam(4, $categoria[0] );
-        //$stmt->bindParam(6, $datosProducto['foto'] );
-        $stmt->bindParam(5, $idProducto );
+        $stmt->bindParam(5, $datosProducto['foto'] );
+        $stmt->bindParam(6, $idProducto );
                 
         
 
