@@ -49,11 +49,12 @@
                 <!-- Basic group add-ons start -->
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos</h4> <center>
-
+                    <!-- FORMULARIO PARA AGREGAR STOCK A UN PRODUCTO ESPECÍFICO -->
                     <form method="POST">
-                        
+                        <!-- Se guarda el id con in input invisible para despues obtenerlo con el form  -->
                         <input type="hidden" name="id" value="<?php echo($_GET["id"]) ?>">
 
+                        <!-- Referencia -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Referencia </label>
                             <div class="col-sm-8 col-lg-10">
@@ -64,7 +65,7 @@
                         </div>
 
                       
-
+                        <!-- Cantidad stock agregado -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Stock </label>
                             <div class="col-sm-8 col-lg-10">
@@ -74,13 +75,13 @@
                             </div>
                         </div>                       
                         
-
+                        <!-- Botón para enviar los datos -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" name="guardar" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>
-
+                    <!-- FIN FORMULARIO PARA AGREGAR STOCK A UN PRODUCTO ESPECÍFICO -->
                 </div>
                 <!-- Basic group add-ons end -->
             </div>

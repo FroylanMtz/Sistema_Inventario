@@ -58,11 +58,13 @@
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos de la categoria</h4> <center>
 
+                    <!-- FORMULARIO PARA EDITAR UNA CATEGORIA -->
                     <form method="POST" enctype="multipart/form-data">
 
                         <!-- id (hidden)-->
                         <input type="hidden" name="id" value="<?php echo($categoria["id"]); ?>">
 
+                        <!-- Nombre de la categoria -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre </label>
                             <div class="col-sm-8 col-lg-10">
@@ -73,6 +75,7 @@
                             </div>
                         </div>
 
+                        <!-- Descripción -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Descripción </label>
                             <div class="col-sm-8 col-lg-10">
@@ -85,13 +88,13 @@
 
                        
                         
-
+                        <!-- Botón para enviar los datos del form -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" name="actualizar" value="Actualizar Datos" /> </center>
                         </div>
 
                     </form>
-
+                    <!-- FIN FORMULARIO PARA EDITAR UNA CATEGORIA -->
                 </div>
                 <!-- Basic group add-ons end -->
             </div>

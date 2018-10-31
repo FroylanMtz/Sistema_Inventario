@@ -39,7 +39,7 @@
         </div>
         <div class="col">
         <div class="page-header-breadcrumb">
-            <ul class="breadcrumb-title">
+            <ul class="breadcrumb-title"> <!--  Se redirecciona al inventario-->
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Nuevo Producto </a>
@@ -59,8 +59,9 @@
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos del producto</h4> <center>
 
+                    <!-- FORMULARIO PARA AGREGAR UN PRODUCTO (importante el enctype para las imagenes/fotos) -->
                     <form method="POST" enctype="multipart/form-data">
-
+                        <!-- Código-->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Código </label>
                             <div class="col-sm-8 col-lg-10">
@@ -70,6 +71,7 @@
                             </div>
                         </div>
 
+                        <!-- Nombre del producto -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Producto </label>
                             <div class="col-sm-8 col-lg-10">
@@ -79,6 +81,7 @@
                             </div>
                         </div>
 
+                        <!-- Seleccionar la categoria con un select -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Categoria </label>
                             <div class="col-sm-8 col-lg-10">
@@ -97,6 +100,7 @@
                             </div>
                         </div>
                         
+                        <!-- Fijar precio -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Precio </label>
                             <div class="col-sm-8 col-lg-10">
@@ -106,6 +110,7 @@
                             </div>
                         </div>
 
+                        <!-- Establecer stock inicial -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Stock </label>
                             <div class="col-sm-8 col-lg-10">
@@ -115,7 +120,7 @@
                             </div>
                         </div>
 
-
+                        <!-- Cargar la foto -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Foto</label>
                             <div class="col-sm-8 col-lg-10">
@@ -127,13 +132,13 @@
                         </div>
 
                         
-
+                        <!-- Botón para accionar el form y enviar los datos GET/POST -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" name="guardar" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>
-
+                    <!-- FIN FORMULARIO PARA AGREGAR UN PRODUCTO -->
                 </div>
                 <!-- Basic group add-ons end -->
             </div>

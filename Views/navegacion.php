@@ -5,6 +5,7 @@
         <div class="">
             <div class="main-menu-header">
                 <div class="user-details">
+                    <!-- Se muestra el nombre del usuario en session-->
                     <span> <h3>  <?= $_SESSION['nombre'] ?>  </h3> </span>
                     <span> Administrador </span>
                 </div>
@@ -36,12 +37,12 @@
 
                 <!-- Lista desplegable -->
                 <ul class="pcoded-submenu">
-                    <li class="">
+                    <li class=""> <!-- Se redirecciona al inventario -->
                         <a href="index.php?action=inventario">
                             <span class="pcoded-mtext" data-i18n="nav.dash.default"><i class="ti-agenda"></i> Lista de productos</span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="">  <!-- Se redirecciona a agregar productos -->
                         <a href="index.php?action=agregar_producto">
                             <span class="pcoded-mtext" data-i18n="nav.dash.ecommerce"> <i class="ti-plus"></i> Agregar producto</span>
                         </a>
@@ -59,12 +60,12 @@
 
                 <!-- Lista desplegable -->
                 <ul class="pcoded-submenu">
-                    <li class="">
+                    <li class=""> <!-- Se redirecciona al listado de categorias -->
                         <a href="index.php?action=categorias">
                             <span class="pcoded-mtext" data-i18n="nav.dash.default"><i class="ti-agenda"></i> Lista de categorías</span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="">   <!-- Se redirecciona a agregar categorias -->
                         <a href="index.php?action=agregar_categoria">
                             <span class="pcoded-mtext" data-i18n="nav.dash.ecommerce"> <i class="ti-plus"></i> Agregar categoría</span>
                         </a>
@@ -82,12 +83,12 @@
                 </a>
 
                 <ul class="pcoded-submenu">
-                    <li class="">
+                    <li class="">  <!-- Se redirecciona al listado de usuarios -->
                         <a href="index.php?action=usuarios">
                             <span class="pcoded-mtext" data-i18n="nav.dash.default"><i class="ti-agenda"></i> Lista de usuarios</span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class=""> <!-- Se redirecciona a agregar usuario -->
                         <a href="index.php?action=agregar_usuario">
                             <span class="pcoded-mtext" data-i18n="nav.dash.ecommerce"> <i class="ti-plus"></i> Agregar usuario</span>
                         </a>

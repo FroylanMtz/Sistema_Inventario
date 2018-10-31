@@ -64,12 +64,14 @@
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos del producto</h4> <center>
 
+                    <!-- FORM PARA EDITAR PRODUCTO -->
                     <form method="POST" enctype="multipart/form-data">
-
+                        <!-- ruta de la imagen (hidden) -->
                         <input type="hidden" name="fotoActual" value="<?= $producto['ruta_img'] ?>">
-
+                        <!-- id del producto (hidden) -->
                         <input type="hidden" name="id" value="<?= $producto['id'] ?>">
 
+                        <!-- Código -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Código </label>
                             <div class="col-sm-8 col-lg-10">
@@ -79,6 +81,7 @@
                             </div>
                         </div>
 
+                        <!-- Nombre del producto -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Producto </label>
                             <div class="col-sm-8 col-lg-10">
@@ -88,6 +91,7 @@
                             </div>
                         </div>
 
+                        <!-- Seleccionar categoria con un select -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Categoria </label>
                             <div class="col-sm-8 col-lg-10">
@@ -99,7 +103,8 @@
                                      ?>                                
                                     <select name="categoria" class="form-control">
                                         <option>
-                                            <?php                                                                 
+                                            <?php
+                                            // Se muestra la opcón actual                                                         
                                             echo $categoria["nombre"];
                                             ?>
                                         </option>
@@ -116,6 +121,7 @@
                             </div>
                         </div>
                         
+                        <!-- Precio del producto -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Precio </label>
                             <div class="col-sm-8 col-lg-10">
@@ -136,7 +142,7 @@
                         </div>
                         -->
 
-                        
+                        <!-- Seleccionar la imagen del producto -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Imagen</label>
                             <div class="col-sm-8 col-lg-10">
@@ -148,7 +154,7 @@
                         </div>
                         
                         
-
+                        <!-- Botón para enviar los datos -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" name="actualizar" value="Guardar Datos" /> </center>
                         </div>

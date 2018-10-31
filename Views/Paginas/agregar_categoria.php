@@ -17,7 +17,7 @@ $controlador = new Controlador();
         </div>
         <div class="col">
         <div class="page-header-breadcrumb">
-            <ul class="breadcrumb-title">
+            <ul class="breadcrumb-title"> <!-- Se redirecciona al inventario -->
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Nueva Categoria </a>
@@ -39,6 +39,7 @@ $controlador = new Controlador();
 
                     <form method="POST" enctype="multipart/form-data">
 
+                        <!-- Nombre -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre </label>
                             <div class="col-sm-8 col-lg-10">
@@ -49,6 +50,7 @@ $controlador = new Controlador();
                             </div>
                         </div>
 
+                        <!-- Descripción -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Descripción </label>
                             <div class="col-sm-8 col-lg-10">
@@ -61,7 +63,7 @@ $controlador = new Controlador();
 
                        
                         
-
+                        <!-- Botón para accionar el form y guardar los datos -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" name="guardar" value="Guardar Datos" /> </center>
                         </div>
@@ -77,8 +79,9 @@ $controlador = new Controlador();
 
 <?php
 
+// Si el botón de guardar fue presionado
 if(isset($_POST['guardar']) ){
-
+    // Se llama al método del controlador para preparas los datos del form y enviarlos al modelo
     $controlador->agregarCategoriaController();
 
 }

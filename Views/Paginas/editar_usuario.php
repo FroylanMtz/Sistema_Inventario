@@ -42,7 +42,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                     <center> <h4 class="sub-title">Complete todos los datos del usuario</h4> <center>
                     
                     <div class="row">
-                        
+                        <!-- Con los datos del usuario se trae la foto del usuario -->
                         <label class="col-sm-4 col-lg-2 col-form-label">Foto actual</label>
                         <div class="col-sm-8 col-lg-10">
                             <div class="input-group">
@@ -51,11 +51,12 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                         </div>
                     </div>
                     
-
+                    <!-- FORMULARIO PARA EDITAR LOS DATOS DEL USUARIO -->
                     <form method="POST" enctype="multipart/form-data">
-                        
+                        <!-- ruta de la foto actual (hidden) -->
                         <input type="hidden" name="fotoActual" value="<?= $datosUsuario[0]['ruta_imagen'] ?>">
                         
+                        <!-- Nombre -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre (s)</label>
                             <div class="col-sm-8 col-lg-10">
@@ -66,6 +67,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                             </div>
                         </div>
 
+                        <!-- Apellidos -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Apellido (s)</label>
                             <div class="col-sm-8 col-lg-10">
@@ -76,6 +78,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                             </div>
                         </div>
                         
+                        <!-- Contraseña -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Contraseña</label>
                             <div class="col-sm-8 col-lg-10">
@@ -85,7 +88,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Correo</label>
                             <div class="col-sm-8 col-lg-10">
@@ -114,7 +117,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                         </div>
 
                     </form>
-
+                    <!-- FIN FORMULARIO PARA EDITAR LOS DATOS DEL USUARIO -->
                 </div>
                 <!-- Basic group add-ons end -->
             </div>

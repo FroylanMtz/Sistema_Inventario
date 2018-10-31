@@ -7,7 +7,7 @@
                         </a>
                         <a class="mobile-search morphsearch-search" href="#">
                             <i class="ti-search"></i>
-                        </a>
+                        </a> <!-- Se redirecciona al inventario -->
                         <a href="index.php?action=inventario">
                             <img class="img-fluid" src="Public/img/logo_nav.png" alt="Theme-Logo" width="200px" height="200px" />
                         </a>
@@ -33,14 +33,16 @@
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
                                 
-                                <a href="#!">
+                                <a href="#!"> <!-- Se coloca la foto del usaurio en sesión con $_SESSION -->
                                     <img src="fotos/<?= $_SESSION['foto'] ?>" class="img-radius" alt="User-Profile-Image">
+                                    <!-- Se muestra el nombre del usuario en sesión -->
                                     <span> <?= $_SESSION['nombre'] ?> </span> <i class="ti-angle-down"></i>
                                 </a>
                                 
                                 <ul class="show-notification profile-notification">
 
                                     <li>
+                                        <!-- Se cierra sesión -->
                                         <a href="index.php?action=salir">
                                             <i class="ti-shift-right"> </i> Salir
                                         </a>

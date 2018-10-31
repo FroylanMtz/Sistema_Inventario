@@ -37,8 +37,9 @@ $controlador = new Controlador();
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos del usuario</h4> <center>
 
+                    <!-- FORMULARIO PARA AGREGAR USUARIO -->
                     <form method="POST" enctype="multipart/form-data">
-
+                        <!-- Nombre -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre (s)</label>
                             <div class="col-sm-8 col-lg-10">
@@ -49,6 +50,7 @@ $controlador = new Controlador();
                             </div>
                         </div>
 
+                        <!-- Apellidos -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Apellido (s)</label>
                             <div class="col-sm-8 col-lg-10">
@@ -59,6 +61,7 @@ $controlador = new Controlador();
                             </div>
                         </div>
 
+                        <!-- Nombre de usuario -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre de usuario</label>
                             <div class="col-sm-8 col-lg-10">
@@ -69,6 +72,7 @@ $controlador = new Controlador();
                             </div>
                         </div>
                         
+                        <!-- Contraseña -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Contraseña</label>
                             <div class="col-sm-8 col-lg-10">
@@ -79,6 +83,7 @@ $controlador = new Controlador();
                             </div>
                         </div>
 
+                        <!-- Correo -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Correo</label>
                             <div class="col-sm-8 col-lg-10">
@@ -89,7 +94,7 @@ $controlador = new Controlador();
                             </div>
                         </div>
 
-
+                        <!-- Fotoe -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Foto</label>
                             <div class="col-sm-8 col-lg-10">
@@ -101,13 +106,13 @@ $controlador = new Controlador();
                         </div>
 
                         
-
+                        <!-- Botón para enviar los datos -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>
-
+                    <!-- FIN FORMULARIO PARA AGREGAR USUARIO -->
                 </div>
                 <!-- Basic group add-ons end -->
             </div>
@@ -117,8 +122,9 @@ $controlador = new Controlador();
 
 <?php
 
+// Si se llenaron los campos se envió el formulario y entra en la condición
 if(isset($_POST['nombre']) ){
-
+    // Se llama al método del controlador que prepara los datos del form para enviarlos al modelo
     $controlador->guardarDatosUsuario();
 
 }
