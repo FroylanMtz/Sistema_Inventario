@@ -1,7 +1,7 @@
 <?php
 
     # Ver producto ---------------------
-    # ---- 90% ----
+    # ---- 100% ----
     # -------------------------------------
     //Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo 
     // que comunican a la vista con el controlador
