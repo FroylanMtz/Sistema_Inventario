@@ -144,7 +144,7 @@ class Controlador
 
 
         //Aqui es donde se hace la validacion de el archivo sea una foto con extensiones de imagenes frecuentes y no un formato .docs o un pdf por ejemplo
-        if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG'){
+        if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG' && $extension != 'jpeg' && $extension != 'JPEG'){
             echo '<script> alert("Error al subir el archivo intenta con otro") </sript>';
         }else{
 
@@ -189,7 +189,7 @@ class Controlador
             $foto = $_POST['fotoActual'];
         }else{
             
-            if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG'){
+            if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG' && $extension != 'jpeg' && $extension != 'JPEG'){
                 echo '<script> alert("Error al subir el archivo intenta con otro") </sript>';
                 
                 $foto = $_POST['fotoActual'];
@@ -374,7 +374,7 @@ class Controlador
 
 
         //Aqui es donde se hace la validacion de el archivo sea una foto con extensiones de imagenes frecuentes y no un formato .docs o un pdf por ejemplo
-        if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG'){
+        if($extension != 'png' && $extension != 'jpg' && $extension != 'PNG' && $extension != 'JPG' && $extension != 'jpeg' && $extension != 'JPEG'){
             echo '<script> alert("Error al subir el archivo intenta con otro") </sript>';
         }else{
 
@@ -407,7 +407,7 @@ class Controlador
         $producto = $_POST["producto"];
         $categoria = $_POST["categoria"];
         $precio = $_POST["precio"];
-        $stock = $_POST["stock"];
+        //$stock = $_POST["stock"];
         //$foto = $_POST["foto"];
         //$id_producto = $_POST["id"];
 
@@ -447,8 +447,7 @@ class Controlador
         $datosProducto = array('codigo' => $codigo,
                             'producto' => $producto,
                             'categoria' => $categoria,
-                            'precio' => $precio,
-                            'stock' => $stock );
+                            'precio' => $precio );
                             /*'foto' => $codigo.'.'.$extension*/  //El nombre de la foto de cada uusario sera el nombre de su usuario, para de esta forma llevar un control y que las fotos no se repiten y se sobreescriban
         
         //Se manda ese objeto con los datos al modelo para que los almacenen en la tabla pasada por parametro aqui abajo

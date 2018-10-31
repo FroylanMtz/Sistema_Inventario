@@ -31,7 +31,7 @@
         <div class="col">
         <div class="page-header-breadcrumb">
             <ul class="breadcrumb-title">
-                <li class="breadcrumb-item"><a href="index.php?action=dashboard"> Inicio </a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Agregar Stock </a>
                 </li>

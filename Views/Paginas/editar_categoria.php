@@ -39,7 +39,7 @@
         <div class="col">
         <div class="page-header-breadcrumb">
             <ul class="breadcrumb-title">
-                <li class="breadcrumb-item"><a href="index.php?action=dashboard"> Inicio </a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Editar Categoria </a>
                 </li>
@@ -61,14 +61,14 @@
                     <form method="POST" enctype="multipart/form-data">
 
                         <!-- id (hidden)-->
-                        <input type="hidden" name="id" value="<?php echo($categoria[0]["id"]); ?>">
+                        <input type="hidden" name="id" value="<?php echo($categoria["id"]); ?>">
 
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nombre </label>
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"><i class="fas fa-file-signature"></i></span>
-                                    <input type="text" class="form-control" name="categoria" required placeholder="Nombre de la categoria" value="<?php echo($categoria[0]["nombre"]); ?>">
+                                    <input type="text" class="form-control" name="categoria" required placeholder="Nombre de la categoria" value="<?php echo($categoria["nombre"]); ?>">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                             <div class="col-sm-8 col-lg-10">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"><i class="fas fa-file-signature"></i></span>
-                                    <input type="text" class="form-control" name="descripcion" required placeholder="Descripción" value="<?php echo($categoria[0]["descripcion"]); ?>">
+                                    <input type="text" class="form-control" name="descripcion" required placeholder="Descripción" value="<?php echo($categoria["descripcion"]); ?>">
                                 </div>
                             </div>
                         </div>

@@ -288,18 +288,17 @@ class Datos extends Conexion{
         $categoria = $stmt_id->fetch();        
 
         //Se prepara el query con el comando UPDATE -> DE EDITAR, O ACTUALIZAR
-        $stmt = Conexion::conectar()->prepare("UPDATE productos SET codigo = ?, nombre = ?, precio = ?, stock = ?, categoria = ? WHERE id = ?");
+        $stmt = Conexion::conectar()->prepare("UPDATE productos SET codigo = ?, nombre = ?, precio = ?, categoria = ? WHERE id = ?");
         
         $id = 5;
         $nombre = "el nombre";
         //Se relacionan todos los parametros con los pasados en el arreglo asociativo desde el controlador
         $stmt->bindParam(1, $datosProducto['codigo'] );
         $stmt->bindParam(2, $datosProducto['producto']); // Se queda nulo
-        $stmt->bindParam(3, $datosProducto['precio'] );
-        $stmt->bindParam(4, $datosProducto['stock'] );
-        $stmt->bindParam(5, $categoria[0] );
+        $stmt->bindParam(3, $datosProducto['precio'] );        
+        $stmt->bindParam(4, $categoria[0] );
         //$stmt->bindParam(6, $datosProducto['foto'] );
-        $stmt->bindParam(6, $idProducto );
+        $stmt->bindParam(5, $idProducto );
                 
         
 

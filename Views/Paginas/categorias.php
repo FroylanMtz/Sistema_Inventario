@@ -34,7 +34,7 @@
         <div class="col">
         <div class="page-header-breadcrumb">
             <ul class="breadcrumb-title">
-                <li class="breadcrumb-item"><a href="#!">Home</a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario">Home</a>
                 </li>
                 <li class="breadcrumb-item"><a href="#!">Categorias</a>
                 </li>

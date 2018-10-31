@@ -38,9 +38,9 @@
         <div class="col">
         <div class="page-header-breadcrumb">
             <ul class="breadcrumb-title">
-                <li class="breadcrumb-item"><a href="#!">Home</a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario">Home</a>
                 </li>
-                <li class="breadcrumb-item"><a href="#!">Inventario</a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario">Inventario</a>
                 </li>
             </ul>
         </div>
@@ -83,7 +83,13 @@
                                     // Se obtienen los datos de la categoria para mostrarla en la lista
                                     $_GET["id"] = $producto["categoria"];
                                     $categoria = $controlador->obtenerCategoriaController();
-                                    echo '<td>'. $categoria[0]['nombre'] .'</td>';
+
+                                    // Si la categoria ya no existe, se escribe NO TIENE
+                                    if($categoria)
+                                        echo '<td>'. $categoria['nombre'] .'</td>';
+                                    else
+                                        echo '<td> No tiene </td>';
+                                    
                                     echo '<td>'. $producto['precio'] .'</td>';
                                     echo '<td>'. $producto['stock'] .'</td>';
                                     

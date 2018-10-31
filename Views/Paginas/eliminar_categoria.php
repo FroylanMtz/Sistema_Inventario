@@ -41,7 +41,7 @@
             <ul class="breadcrumb-title">
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
-                <li class="breadcrumb-item"><a href="index.php?action=eliminar_producto&id=<?php echo($datosCategoria["id"]) ?>"> Eliminar Categoria </a>
+                <li class="breadcrumb-item"><a href="index.php?action=eliminar_categoria&id=<?php echo($datosCategoria["id"]) ?>"> Eliminar Categoria </a>
                 </li>
             </ul>
         </div>

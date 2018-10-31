@@ -8,7 +8,7 @@
                         <a class="mobile-search morphsearch-search" href="#">
                             <i class="ti-search"></i>
                         </a>
-                        <a href="index.php?action=dashboard">
+                        <a href="index.php?action=inventario">
                             <img class="img-fluid" src="Public/img/logo_nav.png" alt="Theme-Logo" width="200px" height="200px" />
                         </a>
                         <a class="mobile-options">

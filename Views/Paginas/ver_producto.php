@@ -30,7 +30,7 @@
     if(isset($_GET["id"])){
         // Se llama al método del controlador para recibir los datos del historial de movimientos de 
         //stock de determinado producto
-        $historial = $controlador->obtenerHistorialController();        
+        $historial = $controlador->obtenerHistorialController();            
     }
 ?>
 
@@ -48,7 +48,7 @@
         <div class="col">
         <div class="page-header-breadcrumb">
             <ul class="breadcrumb-title">
-                <li class="breadcrumb-item"><a href="index.php?action=dashboard"> Inicio </a>
+                <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Producto </a>
                 </li>
@@ -92,7 +92,7 @@
                                     $_GET["id"] = $producto["categoria"];
                                     $categoria = $controlador->obtenerCategoriaController();
                              ?>
-                            <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Categoria:</strong> <?php echo $categoria[0]["nombre"];?></label>                          
+                            <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Categoria:</strong> <?php echo $categoria["nombre"];?></label>                          
                         </div>
                         
                         <div class="row">
@@ -145,15 +145,22 @@
                             echo "<td>" . $historia["nota"] . "</td>";
                             
                             // Obtener el nombre del usuario
-                            $_GET["id"] = $historia["usuario"];
+                            $_GET["id"] = $historia["usuario"];                            
+                            //echo "GET " . $historia["usuario"];
                             $usuario = $controlador->obtenerDatosUsuario();
 
-                            echo "<td>" . $usuario[0]["nombre_usuario"] . " agregó ". $historia["cantidad"] . " producto(s)</td>";
+                            // Si el id de usuario ($historia[id] es null quiere decir que se trajo un array(0))
+                            if($usuario)
+                                echo "<td>" . $usuario[0]["nombre_usuario"] . " agregó ". $historia["cantidad"] . " producto(s)</td>";
+                            else{
+                                echo "<td> Un antiguo usuario (Ya no existe) agregó ". $historia["cantidad"] . " producto(s)</td>";
+                            }
                             //echo "<td>" . $historia["usuario"] . "</td>";
                             echo "<td>" . $historia["cantidad"] . "</td>";
                             echo "<td>" . $historia["referencia"] . "</td>";
                             echo "</tr>";
                         endforeach; // Termina foreach
+
                     }
                     ?>
                 </tbody>
