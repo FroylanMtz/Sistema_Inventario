@@ -88,7 +88,8 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                                 </div>
                             </div>
                         </div>
-                        
+
+                        <!-- Correo -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Correo</label>
                             <div class="col-sm-8 col-lg-10">
@@ -99,7 +100,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                             </div>
                         </div>
 
-
+                        <!-- foto (nueva) -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label">Nueva foto</label>
                             <div class="col-sm-8 col-lg-10">
@@ -111,7 +112,7 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
                         </div>
 
                         
-
+                        <!-- Botón para enviar los datos del formulario -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-primary input-lg" value="Guardar Datos" /> </center>
                         </div>
@@ -127,8 +128,9 @@ echo '<script> alert("Porfavor coloque su contraseña actual si no desea cambiar
 
 <?php
 
+// Si se llenaron todos los campos oblogatorios del form entra a la condición
 if(isset($_POST['nombre']) ){
-
+    // Se llama al método del controlador para preparar los datos del form y enviarlos al modelo
     $controlador->editarDatosUsuario();
 
 }

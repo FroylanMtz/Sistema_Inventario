@@ -31,7 +31,7 @@
         </div>
         <div class="col">
         <div class="page-header-breadcrumb">
-            <ul class="breadcrumb-title">
+            <ul class="breadcrumb-title">  <!-- href que redireciona al listado de productos -->
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Eliminar Stock </a>
@@ -51,10 +51,13 @@
                 <div class="m-b-20">
                     <center> <h4 class="sub-title">Complete todos los datos</h4> <center>
 
+                    <!-- FORM PARA ELIMINAR CIERTA CANTIDAD DE STOCK DE UN PRODUCTO -->
                     <form method="POST">
                         
+                        <!-- Se obtiene el id del producto a modificar stock -->
                         <input type="hidden" name="id" value="<?php echo($_GET["id"]) ?>">
 
+                        <!-- Referencia -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Referencia </label>
                             <div class="col-sm-8 col-lg-10">
@@ -65,7 +68,7 @@
                         </div>
 
                       
-
+                        <!-- Cantidad a stock a eliminar -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-2 col-form-label"> Stock </label>
                             <div class="col-sm-8 col-lg-10">
@@ -75,13 +78,13 @@
                             </div>
                         </div>                       
                         
-
+                        <!-- Botón para enviar los datos del form -->
                         <div class="card-footer">
                             <center> <input type="submit" class="btn btn-danger input-lg" name="guardar" value="Guardar Datos" /> </center>
                         </div>
 
                     </form>
-
+                    <!-- FIN FORM PARA ELIMINAR CIERTA CANTIDAD DE STOCK DE UN PRODUCTO -->
                 </div>
                 <!-- Basic group add-ons end -->
             </div>

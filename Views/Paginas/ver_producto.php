@@ -40,14 +40,14 @@
             <div class="big-icon">
                 <i class="ti-ti"></i>
             </div>
-            <div class="d-inline-block">
+            <div class="d-inline-block"> <!-- Se muestra el nombre del producto en la cabecera de la página -->
                 <h3> <strong><?php echo($producto["nombre"]) ?></strong></h3>
                 <span> Detalles </span>
             </div>
         </div>
         <div class="col">
         <div class="page-header-breadcrumb">
-            <ul class="breadcrumb-title">
+            <ul class="breadcrumb-title"> <!-- Redirecciona a la lista de productos -->
                 <li class="breadcrumb-item"><a href="index.php?action=inventario"> Inicio </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"> Producto </a>
@@ -78,14 +78,15 @@
                             
                         </div>  
 
+                        <!-- id del producto (hidden) -->
                         <input type="hidden" name="id" value="<?= $producto[0]['id'] ?>">
                         
+                        <!-- Datos del producto: Código -->
                         <div class="row">
-                            <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Código:</strong> <?php echo $producto["codigo"]; ?></label>
-                            
+                            <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Código:</strong> <?php echo $producto["codigo"]; ?></label>                            
                         </div>  
                         
-
+                        <!-- Datos del producto: Categoria -->
                         <div class="row">
                             <?php 
                                 // Se obtiene le nombre de la categoria, para no poner el número (id)
@@ -95,10 +96,12 @@
                             <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Categoria:</strong> <?php echo $categoria["nombre"];?></label>                          
                         </div>
                         
+                        <!-- Datos del producto: Precio -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Precio: $ </strong> <?php echo($producto["precio"]) ?></label>                           
                         </div>
 
+                        <!-- Datos del producto: Stock -->
                         <div class="row">
                             <label class="col-sm-4 col-lg-12 col-form-label"> <strong>Stock:</strong> <?php echo($producto["stock"]) ?></label>                           
                         </div>                                                    
@@ -108,8 +111,10 @@
                 
                 <!-- Botones para agregar y eliminar stock -->
                 <div class="card-footer">
-                
+                    
                      <?php 
+                        // Se envia con GET ciertas variables que servirán para ir a las página y realizar 
+                     // las acciones correspondientes
                         echo '<a href="index.php?action=agregar_stock&id='.$producto['id'].'" type="button" class="btn btn-success"> Agregar Stock </a> ';
 
                         echo '<a href="index.php?action=eliminar_stock&id='.$producto['id'].'" type="button" class="btn btn-danger"> Eliminar Stock </a> ';
