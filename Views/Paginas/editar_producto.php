@@ -16,8 +16,15 @@
 
     // Si se presionó el botón de guardar datos
     if (isset($_POST["actualizar"])) {        
-        // Se llama al método del controlador para preparar los datos
-        $controlador->editarProductoController();
+        
+        if($controlador->existeCodigoController($_POST["id"])){
+            // Se llama al método del controlador para preparar los datos
+            $controlador->editarProductoController();                
+        }else{
+            echo '<script> 
+                    alert("El código ya existe, ingrese un nuevo código");                            
+                </script>';
+        }
     }    
 
     // Se obtienen los datos de las categorias para extraer los nombre y mostrarlos en el form

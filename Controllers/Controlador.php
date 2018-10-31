@@ -344,11 +344,16 @@ class Controlador
     }
 
 
-    //Método para verificar si existe un código
-    public function existeCodigoController(){
+    //Método para verificar si existe un código, se pasa el id del producto al momento de editar
+    public function existeCodigoController($idProducto=null){
         // Se recibe la respuesta del modelo, se pasa como parámetro el código con POST
-        $respuestaController = Datos::existeCodigoModel($_POST["codigo"]);
-
+        if($idProducto != null){
+            $respuestaController = Datos::existeCodigoModel($_POST["codigo"], $idProducto);    
+        }else{
+            $respuestaController = Datos::existeCodigoModel($_POST["codigo"]);    
+        }
+        
+        // Si no existe el codigo regresa true
         if($respuestaController) { return true; }
         else { return false; }
     }

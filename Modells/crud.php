@@ -244,14 +244,25 @@ class Datos extends Conexion{
     
 
     // Método para verificar si ya existe un código de un producto
-    // Recibe el código como parámetro
-    public function existeCodigoModel($codigo){
-        // Se guarda la consulta
-        $sql  = "SELECT codigo FROM productos WHERE codigo = ?";
-        // Se prepara la consulta
-        $stmt = Conexion::conectar()->prepare($sql);
-        // Se ejecuta la consulta, pasándole como parámetro el código
-        $stmt->execute([$codigo]);
+    // Recibe el código como parámetro, también el id del producto como parámetro opcional
+    public function existeCodigoModel($codigo, $idProducto=null){
+
+        // Se verifica si se pasó el id del producto como parámetro
+        if($idProducto != null){
+            // Consulta sql para que verifique si está ingresando un codigo que ya existe en otros productos
+            $sql = "SELECT codigo FROM productos WHERE codigo=? AND id!=?";
+            $stmt = Conexion::conectar()->prepare($sql);
+            // Se ejecuta ,pasándo el código e id como parámetro
+            $stmt->execute([$codigo,$idProducto]);
+        }else{
+            // Se guarda la consulta
+            $sql  = "SELECT codigo FROM productos WHERE codigo = ?";
+            // Se prepara la consulta
+            $stmt = Conexion::conectar()->prepare($sql);
+            // Se ejecuta la consulta, pasándole como parámetro el código
+            $stmt->execute([$codigo]);
+        }
+        
 
         // Se guarda en un array el resultado de la consulta, si el array está vacío 
         // quiere decir que no existe ese código por lo tanto retorna true, sino false.
